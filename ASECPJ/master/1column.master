@@ -1,0 +1,14 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/master/Site.Master" AutoEventWireup="true" CodeBehind="1column.master.cs" Inherits="ASECPJ.master._1column" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <asp:ContentPlaceHolder ID="content" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

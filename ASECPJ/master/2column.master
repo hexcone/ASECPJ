@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/master/Site.Master" AutoEventWireup="true" CodeBehind="2column.master.cs" Inherits="ASECPJ.master._2column" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+    <div>
+        <asp:ContentPlaceHolder ID="contenttop" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <header>
+    </header>
+    <div class="columnleft">
+        <asp:ContentPlaceHolder ID="contentleft" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="columnright">
+        <asp:ContentPlaceHolder ID="contentright" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    <div class="clearfix"></div>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
