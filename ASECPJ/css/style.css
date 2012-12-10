@@ -1,7 +1,5 @@
 ﻿@charset "UTF-8";
 
-
-
 /* ----------------- Reset all styles ----------------- */
 *{
 	margin:0;
@@ -16,7 +14,6 @@ body{
 	color:#2d2d2d;
 }
 
-
 /* ----------------- Wrapper - keeps all content in the center of page -----------------  */
 .wrapper{
 	margin:auto;
@@ -24,8 +21,8 @@ body{
 	height:auto;
 }
 
-
 /* The rest is pretty self explanatory - it appears in the order that it occurs on the HTML document */
+
 #top{
 	height:40px;
 }
@@ -47,23 +44,21 @@ body{
 	font-weight:normal;
 	font-size:215%;
 	text-shadow: 0 1px 1px #FFF;
-}
 
-#logotitle a{
-	color:#2d2d2d;
+    color:#2d2d2d;
 	text-decoration:none;
 }
 
 nav{
 	float:right;
-	width:400px;
+	width:500px;
 	display:block;
 	height:40px;
 }
 
 nav ul li{
 	display:block;
-	width:25%;
+	width:16.5%;
 	float:left;
 	text-align:center;	
 }
@@ -103,13 +98,12 @@ hr{
 
 header{
 	width:100%;
-	margin:5% 0 5% 0;
+	margin:0 0 5% 0;
 }
 
 header h1{
 	font-family: Lato, Arial, Helvetica, sans-serif;
-	text-align:center;
-	font-size:140%;
+	font-size:210%;
 	font-weight:normal;
 	letter-spacing:1px;
 	margin-bottom:1%;
@@ -122,16 +116,41 @@ header h1 span{
 
 header h2{
 	font-family: Lato, Arial, Helvetica, sans-serif;
-	text-align:center;
 	font-size:100%;
 	font-weight:normal;
+	color:#f38094;
 }
-	
-#slideshow{
+
+header p{
+	font-family: Lato, Arial, Helvetica, sans-serif;
+	font-size:90%;
+	font-weight:normal;
+	margin-top:2%;
+}
+
+#slideshow {
+    width: 100%;
+    margin-top: 2%;
+}
+		
+#workbody{
 	width:100%;
 	margin-top:2%;
 }
 
+#workbody img{
+	width:100%;
+	border-radius:15px;
+}
+
+#workbody h5{
+	border-radius:0 0 15px 15px;
+	font-family: Lato, Arial, Helvetica, sans-serif;
+	font-size:15px;
+	font-weight:normal;
+	color:#2d2d2d;
+	margin:10px 0 6% 5px;
+}
 
 /* - - - - - - - - - - - - - - -  Slider START  - - - - - - - - - - - - - - - */
 
@@ -212,7 +231,6 @@ header h2{
 	text-decoration:none;
 }
 
-
 /* ----------------------- WORK LINKS START ------------------------- */
 #work{
 	width:1000px;
@@ -257,7 +275,6 @@ header h2{
 	-o-transition: opacity 0.2s ease-in-out;
 	-ms-transition: opacity 0.2s ease-in-out;
 	transition: opacity 0.2s ease-in-out;
-	
 }
 
 .item img:hover{
@@ -287,9 +304,8 @@ header h2{
 	color:#f38094;
 	text-decoration:none;
 }
+
 /* ----------------------- WORK LINKS END ------------------------- */
-
-
 #bottom h3{
 	margin:4% 0 3% 0;
 	font-family:Cookie, Arial, Helvetica, sans-serif;
@@ -300,6 +316,11 @@ header h2{
 	text-shadow: 0 1px 1px #c1c1c1;
 }
 
+footer{
+	width:100%;
+	padding:10px 0;
+	background-color:#2d2d2d;
+}
 
 footer{
 	width:100%;
@@ -307,25 +328,34 @@ footer{
 	background-color:#2d2d2d;
 }
 
-.icon{
-	float:right;
-	width:32px;
-	margin:95px 0 2px 4%;
-	opacity:0.85;
+.left{
+	margin-top:4%;
+	width:48%;
+	float:left;
+	margin-bottom:2%;
 }
 
-.icon:hover{
-	opacity:1;
-}
-
-.social{
+.left h3{
+	font-family:Cookie, Arial, Helvetica, sans-serif;
+	font-size:180%;
+	font-weight:normal;
+	text-align:center;
 	color:#f38094;
+	margin-bottom:5%;
+	text-shadow: 0 1px 1px #dadada;
 }
 
-
-/* ----------------------------- FORM ----------------------------------- */
+/* ----------------------------- CONTACT FORM START ----------------------------------- */
 
 .left h4{
+	font-family:Cookie, Arial, Helvetica, sans-serif;
+	font-size:180%;
+	font-weight:normal;
+	color:#f38094;
+	margin-bottom:10px;
+}
+
+.contacttitle{
 	font-family:Cookie, Arial, Helvetica, sans-serif;
 	font-size:180%;
 	font-weight:normal;
@@ -407,7 +437,47 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	list-style-type: none;
 	padding-top:5px;
 }
+
+/* ----------------------------- CONTACT FORM END ----------------------------------- */
 	
+.right{
+	margin-top:4%;
+	width:48%;
+	float:right;
+	margin-bottom:2%;
+}
+
+.right p{
+	font-family:Lato, Arial, Helvetica, sans-serif;
+	font-size:100%;
+	line-height:140%;
+}
+
+.icon{
+	float:right;
+	width:32px;
+	margin:95px 0 2px 4%;
+	opacity:0.85;
+}
+
+.icon:hover{
+	opacity:1;
+}
+
+.social{
+	color:#f38094;
+}
+
+.social p{
+	float:right;
+	letter-spacing:1px;
+	margin:98px 0 0 0;
+}
+
+.clearfix {
+	float: none;
+	clear: both;
+}
 
 /* -- Make the highlight colours pretty -- */
 ::selection      { background:#f38094; color:#FFF;}
@@ -416,7 +486,9 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 
 
 
+
 /* ---------------------- RESPONSIVE STUFF - ONLY TOUCH IF YOUR'E CONFIDENT WITH CSS ---------------------- */
+
 
 
 @media only screen and (max-width: 1279px) {
@@ -483,11 +555,11 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 
 @media only screen and (max-width: 860px) {
 	header h1{
-		font-size:110%;
+		font-size:160%;
 	}
 	
 	header h2{
-		font-size:80%;
+		font-size:100%;
 	}
 }
 
@@ -505,12 +577,12 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	}
 	
 	header h1{
-		font-size:100%;
-		margin-bottom:5%;
+		font-size:140%;
 	}
 	
 	header h2{
-		font-size:60%;
+		font-size:70%;
+		margin-bottom:5%;
 	}
 	
 	.left{
@@ -562,8 +634,8 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 	}
 }
 
+/* ------- END :) ------- */
 
-	
 /* ---------------------- SELF DEFINED CSS ---------------------- */
 .subnav{
 	width:100%;
@@ -618,4 +690,20 @@ input:focus, input.focused, textarea:focus, textarea.focused {  color: #3e3e3e; 
 .columnright {
     width:29%;
     float: right;
+}
+
+#accordion {
+}
+
+#accordion h2{
+    font-family: Lato, Arial, Helvetica, sans-serif;
+	font-size:100%;
+	font-weight:normal;
+	color:#f38094;
+}
+
+#accordion div{
+	font-family: Lato, Arial, Helvetica, sans-serif;
+	font-size:90%;
+	font-weight:normal;
 }

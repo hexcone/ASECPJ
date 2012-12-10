@@ -1,6 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/Site.Master" AutoEventWireup="true" CodeBehind="home.aspx.cs" Inherits="ASECPJ.home" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="../scripts/jquery.carouFredSel-5.5.2.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="../scripts/jquery.form.js"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>

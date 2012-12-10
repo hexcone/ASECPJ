@@ -60,7 +60,7 @@
     <Content Include="1columnsample.aspx" />
     <Content Include="2columnsample.aspx" />
     <Content Include="css\style.css" />
-    <Content Include="css\work.css" />
+    <Content Include="geocache\view.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\backgroundtexture.png" />
     <Content Include="images\icons\facebook.png" />
@@ -104,6 +104,13 @@
     </Compile>
     <Compile Include="2columnsample.aspx.designer.cs">
       <DependentUpon>2columnsample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geocache\view.aspx.cs">
+      <DependentUpon>view.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geocache\view.aspx.designer.cs">
+      <DependentUpon>view.aspx</DependentUpon>
     </Compile>
     <Compile Include="home.aspx.cs">
       <DependentUpon>home.aspx</DependentUpon>

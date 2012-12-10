@@ -9,8 +9,7 @@
         <asp:ContentPlaceHolder ID="contenttop" runat="server">
         </asp:ContentPlaceHolder>
     </div>
-    <header>
-    </header>
+    <br/><br/>
     <div class="columnleft">
         <asp:ContentPlaceHolder ID="contentleft" runat="server">
         </asp:ContentPlaceHolder>
