@@ -5,8 +5,8 @@
     <script type="text/javascript" src="../scripts/jquery.carouFredSel-5.5.2.js"></script>
     <script type="text/javascript" src="../scripts/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="../scripts/jquery.form.js"></script>
-
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
         <!-- Header Title Start -->
@@ -43,7 +43,7 @@
     <!-- Slideshow End -->
 
 
-    <aside id="about" class=" left">
+    <aside id="about" class="left">
         <!-- Text Section Start -->
         <h3>about me</h3>
         <!-- Replace all text with what you want -->

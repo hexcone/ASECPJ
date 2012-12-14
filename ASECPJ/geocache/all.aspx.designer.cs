@@ -10,51 +10,51 @@
 namespace ASECPJ.geocache {
     
     
-    public partial class view1 {
+    public partial class view {
         
         /// <summary>
-        /// subjectTextBox control.
+        /// keywordTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox subjectTextBox;
+        protected global::System.Web.UI.WebControls.TextBox keywordTextBox;
         
         /// <summary>
-        /// commentTextBox control.
+        /// sortDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox commentTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList sortDropDownList;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// blockCheckBoxList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.CheckBoxList blockCheckBoxList;
         
         /// <summary>
-        /// verificationCodeTextBox control.
+        /// levelCheckBoxList1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox verificationCodeTextBox;
+        protected global::System.Web.UI.WebControls.CheckBoxList levelCheckBoxList1;
         
         /// <summary>
-        /// submitButton control.
+        /// filterButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button submitButton;
+        protected global::System.Web.UI.WebControls.Button filterButton;
     }
 }

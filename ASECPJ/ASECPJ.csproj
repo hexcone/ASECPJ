@@ -60,9 +60,12 @@
     <Content Include="1columnsample.aspx" />
     <Content Include="2columnsample.aspx" />
     <Content Include="css\style.css" />
+    <Content Include="geocache\all.aspx" />
     <Content Include="geocache\view.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\backgroundtexture.png" />
+    <Content Include="images\geocache\gator.jpg" />
+    <Content Include="images\geocache\user-image.png" />
     <Content Include="images\icons\facebook.png" />
     <Content Include="images\icons\google.png" />
     <Content Include="images\icons\twitter.png" />
@@ -104,6 +107,13 @@
     </Compile>
     <Compile Include="2columnsample.aspx.designer.cs">
       <DependentUpon>2columnsample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geocache\all.aspx.cs">
+      <DependentUpon>all.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geocache\all.aspx.designer.cs">
+      <DependentUpon>all.aspx</DependentUpon>
     </Compile>
     <Compile Include="geocache\view.aspx.cs">
       <DependentUpon>view.aspx</DependentUpon>

@@ -1,118 +1,108 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/2column.master" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="ASECPJ.geocache.view" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/1column.master" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="ASECPJ.geocache.view1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         $(function () {
-            $("#accordion").accordion({
+            $(".accordion").accordion({
+                active: false,
                 collapsible: true,
                 heightStyle: "content",
-                event: "click hoverintent"
             });
         });
-
-        var cfg = ($.hoverintent = {
-            sensitivity: 7,
-            interval: 100
-        });
-
-        $.event.special.hoverintent = {
-            setup: function () {
-                $(this).bind("mouseover", jQuery.event.special.hoverintent.handler);
-            },
-            teardown: function () {
-                $(this).unbind("mouseover", jQuery.event.special.hoverintent.handler);
-            },
-            handler: function (event) {
-                var that = this,
-                    args = arguments,
-                    target = $(event.target),
-                    cX, cY, pX, pY;
-
-                function track(event) {
-                    cX = event.pageX;
-                    cY = event.pageY;
-                };
-                pX = event.pageX;
-                pY = event.pageY;
-                function clear() {
-                    target
-                        .unbind("mousemove", track)
-                        .unbind("mouseout", arguments.callee);
-                    clearTimeout(timeout);
-                }
-                function handler() {
-                    if ((Math.abs(pX - cX) + Math.abs(pY - cY)) < cfg.sensitivity) {
-                        clear();
-                        event.type = "hoverintent";
-                        // prevent accessing the original event since the new event
-                        // is fired asynchronously and the old event is no longer
-                        // usable (#6028)
-                        event.originalEvent = {};
-                        jQuery.event.handle.apply(that, args);
-                    } else {
-                        pX = cX;
-                        pY = cY;
-                        timeout = setTimeout(handler, cfg.interval);
-                    }
-                }
-                var timeout = setTimeout(handler, cfg.interval);
-                target.mousemove(track).mouseout(clear);
-                return true;
-            }
-        };
     </script>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="contenttop" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <div class="subnav">
         <table>
             <tr>
-                <td><a href="#top">Geocache</a></td>
+                <td><a href="all.aspx">Geocache</a></td>
                 <td><a href="#about">Finds</a></td>
                 <td><a href="#work">Location</a></td>
             </tr>
         </table>
     </div>
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="contentleft" runat="server">
+
+    <br />
+    <br />
+
     <header>
-        <h1>Geocache</h1>
-        <table style="border: 1px solid black; width: 100%;">
-            <tr>
-                <th>Description</th>
-                <th>Placed</th>
-                <th>Found</th>
-            </tr>
-            <tr>
-                <td><a href="#">Gator Bait CITO</a><br />
-                    by DoTheNumbers | GC3XY7P | Alabama </td>
-                <td>9 Mar 13 </td>
-                <td>0 times</td>
-            </tr>
-        </table>
-    </header>
-</asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="contentright" runat="server">
-    <header>
-        <div id="accordion">
-            <h2>Section 1</h2>
+        <h1>Gator Bait CITO</h1>
+        <h2><a href="#">DoTheNumbers</a> | School of Information Technology | 9 Mar 13</h2>
+
+        <section id="workbody">
+            <img src="../images/geocache/gator.jpg" alt="sky1">
+        </section>
+
+        <p>
+            In this event, we will be taking a different approach to a Cache In/Trash Out Event. This is a kayak/canoe event that will take place in the Saltwater
+            Marsh of Gulf Shores and Gulf State Park. As a point of reference, we will be near The Original Oyster House for this event.<br />
+            We hope for the Geoweekend to consist of five event caches, as listed below.<br />
+        </p>
+        <ul>
+            <li>ASPGC Event (Friday, March 8) – This one will probably be in our Classroom or Activities building, but the organizer (Amy Bannick Griffin) of it 
+                may opt for some other location.   This will be an evening event.</li>
+
+            <li>Hardcore Event (Saturday, March 9) - This event will take place Saturday morning and is where some of the more dedicated and "Hardcore" cachers 
+                will head out through the swamp to get our Hardcore series.  I may just have to hide another one or two out there to tempt some repeat visitors. </li>
+
+            <li>Picnicking with the Gators Event (Saturday, March 9)- This will be a lunch time event for the survivors of the Hardcore Event and those to scared 
+                to go "Hardcore". It will be held at Lake Shelby and hosted by Smarky (Sandy Harris).</li>
+        </ul>
+
+        <hr />
+
+        <h1>Finds</h1>
+        <div class="accordion">
+            <h2>Add your find!</h2>
             <div>
-                <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+                <p>
+                    Subject:
+                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" title="Subject"></asp:TextBox>
+                    Comment:
+                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" title="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                    Image:
+                        <asp:FileUpload ID="FileUpload1" runat="server" /><br />
+                    <br />
+                    Verification Code: (Found with your geocache!)
+                        <asp:TextBox ID="verificationCodeTextBox" runat="server" class="formstyle" title="Verification Code"></asp:TextBox>
+                    <asp:Button ID="submitButton" runat="server" class="button formstyle" Width="30%" Text="I've found a geocache!" />
+                </p>
             </div>
-            <h2>Section 2</h2>
-            <div>
-                <p>Sed non urna. Donec et ante. Phasellus eu ligula. Vestibulum sit amet purus. Vivamus hendrerit, dolor at aliquet laoreet, mauris turpis porttitor velit, faucibus interdum tellus libero ac justo. Vivamus non quam. In suscipit faucibus urna. </p>
-            </div>
-            <h2>Section 3</h2>
-            <div>
-                <p>Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis. Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui. </p>
-                <ul>
-                    <li>List item one</li>
-                    <li>List item two</li>
-                    <li>List item three</li>
-                </ul>
-            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="commentBox">
+            <aside class="comment">
+                <h3>Second find</h3>
+                <h2>Found 15th December 2012</h2>
+                <p>Short comment.</p>
+            </aside>
+            <aside class="item">
+                <a href="#">
+                    <img src="../images/geocache/user-image.png" alt="Dashocat" /></a><!-- Image must be 400px by 300px -->
+                <h3>Dashocat 2</h3>
+                <!--Title-->
+                <p>SIT Year 2</p>
+            </aside>
+        </div>
+
+        <div class="commentBox">
+            <aside class="comment">
+                <h3>OMG WASTED 3 HOURS OF MY LIFE</h3>
+                <h2>Found 14th December 2012</h2>
+                <p>I’m the kind of person who likes to be by himself. To put a finer point on it, I’m the type of person who doesn’t find it painful to be alone. I find spending an hour or two every day running alone, not speaking to anyone, as well as four or five hours alone at my desk, to be neither difficult nor boring. I’ve had this tendency ever since I was young, when, given a choice, I much preferred reading books on my own or concentrating on listening to music over being with someone else. I could always think of things to do by myself.</p>
+            </aside>
+            <aside class="item">
+                <a href="#">
+                    <img src="../images/geocache/user-image.png" alt="Dashocat" /></a><!-- Image must be 400px by 300px -->
+                <h3>Dashocat</h3>
+                <!--Title-->
+                <p>SIT Year 2</p>
+            </aside>
         </div>
     </header>
 </asp:Content>
-<asp:Content ID="Content5" ContentPlaceHolderID="footer" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
 </asp:Content>

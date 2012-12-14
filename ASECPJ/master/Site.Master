@@ -113,13 +113,13 @@
                     <section class="right social">
                         <!-- Social Icons Start -->
                         <a href="http://plus.google.co.uk">
-                            <img class="icon" src="images/icons/google.png" width="32" height="32" alt="google" /></a><!-- Replace with any 32px x 32px icons -->
+                            <img class="icon" src="../images/icons/google.png" width="32" height="32" alt="google" /></a><!-- Replace with any 32px x 32px icons -->
                         <a href="http://youtube.com">
-                            <img class="icon" src="images/icons/youtube.png" width="32" height="32" alt="youtube" /></a><!-- Replace with any 32px x 32px icons -->
+                            <img class="icon" src="../images/icons/youtube.png" width="32" height="32" alt="youtube" /></a><!-- Replace with any 32px x 32px icons -->
                         <a href="http://facebook.com">
-                            <img class="icon" src="images/icons/facebook.png" width="32" height="32" alt="facebook" /></a><!-- Replace with any 32px x 32px icons -->
+                            <img class="icon" src="../images/icons/facebook.png" width="32" height="32" alt="facebook" /></a><!-- Replace with any 32px x 32px icons -->
                         <a href="http://twitter.com">
-                            <img class="icon" src="images/icons/twitter.png" width="32" height="32" alt="twitter" /></a><!-- Replace with any 32px x 32px icons -->
+                            <img class="icon" src="../images/icons/twitter.png" width="32" height="32" alt="twitter" /></a><!-- Replace with any 32px x 32px icons -->
                         <p>lets get social - </p>
                     </section>
                     <!-- Social Icons End -->
