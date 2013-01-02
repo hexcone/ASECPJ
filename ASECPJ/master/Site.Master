@@ -74,7 +74,7 @@
                             <li><a href="../food/food.aspx">Food</a></li>
                             <li><a href="../event/event.aspx">Event</a></li>
                             <li><a href="../facility/facility.aspx">Facility</a></li>
-                            <li><a href="../geocache/geocache.aspx">Geocache</a></li>
+                            <li><a href="../geocache/all.aspx">Geocache</a></li>
                         </ul>
                     </nav>
                     <!-- Navigation End -->

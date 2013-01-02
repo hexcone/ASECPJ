@@ -13,5 +13,10 @@ namespace ASECPJ.geocache
         {
 
         }
+
+        protected void createButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("create.aspx");
+        }
     }
 }

@@ -796,3 +796,7 @@ header ul {
 .userimage {
     width:400px;
 }
+
+.floatright {
+    float: right;
+}

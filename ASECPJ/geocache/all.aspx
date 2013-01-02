@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/2column.master" AutoEventWireup="True" CodeBehind="all.aspx.cs" Inherits="ASECPJ.geocache.view" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="2column-geocache.master" AutoEventWireup="True" CodeBehind="all.aspx.cs" Inherits="ASECPJ.geocache.view" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
@@ -25,19 +25,11 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="contenttop" runat="server">
-    <div class="subnav">
-        <table>
-            <tr>
-                <td><a href="all.aspx">Geocache</a></td>
-                <td><a href="#about">Finds</a></td>
-                <td><a href="#work">Location</a></td>
-            </tr>
-        </table>
-    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="contentleft" runat="server">
     <header>
-        <h1>Geocache</h1>
+        <h1>Geocache 
+            <asp:Button ID="createButton" runat="server" class="button formstyle" Width="20%" Text="Hide a geocache!" OnClick="createButton_Click" /></h1>
         <table style="border: 1px solid black; width: 100%;">
             <tr>
                 <th>
@@ -69,6 +61,17 @@
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contentright" runat="server">
     <header>
+        <div class="accordion">
+            <h2>Owner</h2>
+            <div>
+                <p>
+                    <asp:RadioButtonList ID="ownerRadioButtonList" GroupName="owner" runat="server"></asp:RadioButtonList>
+                    <asp:RadioButton ID="allRadioButton1" Text=" All" GroupName="owner" runat="server" /><br />
+                    <asp:RadioButton ID="meRadioButton" Text=" Me" GroupName="owner" runat="server" /><br />
+                    <asp:RadioButton ID="userRadioButton" GroupName="owner" runat="server" /> <asp:TextBox ID="userTextBox" class="formstyle" style="width:80%" runat="server"></asp:TextBox>
+                </p>
+            </div>
+        </div>
         <div class="accordion">
             <h2>Filter by keyword</h2>
             <div>

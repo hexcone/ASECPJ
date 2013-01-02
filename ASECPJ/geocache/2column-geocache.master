@@ -1,0 +1,30 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/master/2column.master" AutoEventWireup="true" CodeBehind="2column-geocache.master.cs" Inherits="ASECPJ.geocache._2column_geocache" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="contenttop" runat="server">
+    <div class="subnav">
+        <table>
+            <tr>
+                <td><a href="all.aspx">Geocache</a></td>
+                <td><a href="find.aspx">Finds</a></td>
+                <td><a href="track.aspx">Location</a></td>
+            </tr>
+        </table>
+    </div>
+    <asp:ContentPlaceHolder ID="contenttop" runat="server">
+        </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="contentleft" runat="server">
+    <asp:ContentPlaceHolder ID="contentleft" runat="server">
+        </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content4" ContentPlaceHolderID="contentright" runat="server">
+    <asp:ContentPlaceHolder ID="contentright" runat="server">
+        </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content5" ContentPlaceHolderID="footer" runat="server">
+    <asp:ContentPlaceHolder ID="footer" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>

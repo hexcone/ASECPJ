@@ -7,17 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace ASECPJ.geocache
 {
-    public partial class view1 : System.Web.UI.Page
+    public partial class _2column_geocache : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
-
-        protected void reportButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

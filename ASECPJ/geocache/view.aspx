@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/master/1column.master" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="ASECPJ.geocache.view1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="1column-geocache.master" AutoEventWireup="true" CodeBehind="view.aspx.cs" Inherits="ASECPJ.geocache.view1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
@@ -9,24 +9,29 @@
                 heightStyle: "content",
             });
         });
+        $().ready(function () {
+            $("#ConfirmPanel").dialog({
+                autoOpen: false,
+                modal: true,
+                bgiframe: true,
+                width: 400,
+                height: 600,
+                buttons: {
+                    <%--'Youbetcha': function () {
+                        <%=this.Page.ClientScript.GetPostBackEventReference(new PostBackOptions(this.Button1))%>;
+                    },
+                    'Cancel': function () {
+                        $(this).dialog('close');
+                    }--%>
+                }
+            })
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
-    <div class="subnav">
-        <table>
-            <tr>
-                <td><a href="all.aspx">Geocache</a></td>
-                <td><a href="#about">Finds</a></td>
-                <td><a href="#work">Location</a></td>
-            </tr>
-        </table>
-    </div>
-
-    <br />
-    <br />
-
     <header>
-        <h1>Gator Bait CITO</h1>
+        <h1>Gator Bait CITO
+            <asp:Button ID="reportButton" runat="server" class="button formstyle" Width="20%" Text="Report geocache" OnClick="reportButton_Click" /></h1>
         <h2><a href="#">DoTheNumbers</a> | School of Information Technology | 9 Mar 13</h2>
 
         <section id="workbody">
@@ -83,9 +88,9 @@
                 <a href="#">
                     <img src="../images/geocache/user-image.png" alt="Dashocat" /></a><!-- Image must be 400px by 300px -->
                 <h3>Dashocat 2</h3>
-                <!--Title-->
                 <p>SIT Year 2</p>
             </aside>
+            <asp:Button ID="Button1" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ConfirmPanel').data('findID', 'test'); $('#ConfirmPanel').dialog('open'); return false;" Text="Report" />
         </div>
 
         <div class="commentBox">
@@ -98,9 +103,30 @@
                 <a href="#">
                     <img src="../images/geocache/user-image.png" alt="Dashocat" /></a><!-- Image must be 400px by 300px -->
                 <h3>Dashocat</h3>
-                <!--Title-->
                 <p>SIT Year 2</p>
             </aside>
+            <asp:Button ID="Button2" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ConfirmPanel').data('findID', 'test'); $('#ConfirmPanel').dialog('open'); return false;" Text="Report" />
+        </div>
+
+        <div id="ConfirmPanel" title="Report Find!">
+            <p>
+                <asp:Label ID="Label1" runat="server"></asp:Label>
+                <script>
+                    var txt;
+                    if ($("#ConfirmPanel").data('findID') != null) {
+                        txt = $("#ConfirmPanel").data('findID');
+                    }
+                    else
+                        txt = "lol";
+                    $("#<%= Label1.ClientID %>").text(txt);
+                    </script>
+                Reason: 
+
+
+                <ul>
+                    <li>Are you really, really sure???? </li>
+                </ul>
+            </p>
         </div>
     </header>
 </asp:Content>
