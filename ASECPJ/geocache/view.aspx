@@ -10,12 +10,12 @@
             });
         });
         $().ready(function () {
-            $("#ConfirmPanel").dialog({
+            $("#ReportFindPanel").dialog({
                 autoOpen: false,
                 modal: true,
                 bgiframe: true,
                 width: 400,
-                height: 600,
+                height: 500,
                 buttons: {
                     <%--'Youbetcha': function () {
                         <%=this.Page.ClientScript.GetPostBackEventReference(new PostBackOptions(this.Button1))%>;
@@ -25,13 +25,34 @@
                     }--%>
                 }
             })
+            $('#ReportFindPanel').parent().appendTo($("form:first"));
+        });
+        $().ready(function () {
+            $("#ReportGeocachePanel").dialog({
+                autoOpen: false,
+                modal: true,
+                bgiframe: true,
+                width: 400,
+                height: 500,
+                buttons: {
+                    <%--'Youbetcha': function () {
+                        <%=this.Page.ClientScript.GetPostBackEventReference(new PostBackOptions(this.Button1))%>;
+                    },
+                    'Cancel': function () {
+                        $(this).dialog('close');
+                    }--%>
+                }
+            })
+            $('#ReportGeocachePanel').parent().appendTo($("form:first"));
         });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
         <h1>Gator Bait CITO
-            <asp:Button ID="reportButton" runat="server" class="button formstyle" Width="20%" Text="Report geocache" OnClick="reportButton_Click" /></h1>
+            <asp:Button ID="reportButton" runat="server" class="button formstyle" Width="20%" Text="Report geocache" OnClientClick="javascript: $('#ReportGeocachePanel').dialog('open'); return false;" />
+            <asp:Button ID="editButton" runat="server" class="button formstyle" Width="20%" Text="Edit geocache" OnClick="editButton_Click" />
+        </h1>
         <h2><a href="#">DoTheNumbers</a> | School of Information Technology | 9 Mar 13</h2>
 
         <section id="workbody">
@@ -62,9 +83,9 @@
             <div>
                 <p>
                     Subject:
-                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" title="Subject"></asp:TextBox>
+                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" placeholder="Subject"></asp:TextBox>
                     Comment:
-                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" title="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" placeholder="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
                     Image:
                         <asp:FileUpload ID="FileUpload1" runat="server" /><br />
                     <br />
@@ -90,7 +111,7 @@
                 <h3>Dashocat 2</h3>
                 <p>SIT Year 2</p>
             </aside>
-            <asp:Button ID="Button1" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ConfirmPanel').data('findID', 'test'); $('#ConfirmPanel').dialog('open'); return false;" Text="Report" />
+            <asp:Button ID="Button1" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ReportFindPanel').dialog('open'); return false;" Text="Report" />
         </div>
 
         <div class="commentBox">
@@ -105,27 +126,43 @@
                 <h3>Dashocat</h3>
                 <p>SIT Year 2</p>
             </aside>
-            <asp:Button ID="Button2" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ConfirmPanel').data('findID', 'test'); $('#ConfirmPanel').dialog('open'); return false;" Text="Report" />
+            <asp:Button ID="Button2" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ReportFindPanel').dialog('open'); return false;" Text="Report" />
         </div>
 
-        <div id="ConfirmPanel" title="Report Find!">
+        <div id="ReportGeocachePanel" title="Report Geocache!">
             <p>
-                <asp:Label ID="Label1" runat="server"></asp:Label>
-                <script>
-                    var txt;
-                    if ($("#ConfirmPanel").data('findID') != null) {
-                        txt = $("#ConfirmPanel").data('findID');
-                    }
-                    else
-                        txt = "lol";
-                    $("#<%= Label1.ClientID %>").text(txt);
-                    </script>
-                Reason: 
+                Reason:<br />
+                <asp:RadioButtonList ID="geocacheReasonRadioButtonList" GroupName="geocacheReason" runat="server"></asp:RadioButtonList>
+                <asp:RadioButton ID="gViolentRadioButton" Text=" Violent Content" GroupName="geocacheReason" runat="server" /><br />
+                <asp:RadioButton ID="gHatefulRadioButton" Text=" Hateful Content" GroupName="geocacheReason" runat="server" /><br />
+                <asp:RadioButton ID="gSpamRadioButton" Text=" Spam" GroupName="geocacheReason" runat="server" /><br />
+                <asp:RadioButton ID="gCopyrightedRadioButton" Text=" Copyrighted Content" GroupName="geocacheReason" runat="server" /><br />
+                <asp:RadioButton ID="gLostRadioButton" Text=" Lost Geocache" GroupName="geocacheReason" runat="server" /><br />
+                <asp:RadioButton ID="gOtherRadioButton" GroupName="geocacheReason" runat="server" /> <asp:TextBox ID="TextBox1" class="formstyle" style="width:80%" runat="server"></asp:TextBox>
 
 
-                <ul>
-                    <li>Are you really, really sure???? </li>
-                </ul>
+                Additional Information:<br />
+                <asp:TextBox ID="TextBox2" runat="server" class="formstyle" title="Comment" Height="150px" TextMode="MultiLine"></asp:TextBox><br />
+
+                <asp:Button ID="Button3" runat="server" class="button formstyle" OnClientClick="javascript: $(#ReportGeocachePanel).dialog('close');" Width="100%" Text="Submit!" />
+            </p>
+        </div>
+
+        <div id="ReportFindPanel" title="Report Find!">
+            <p>
+                Reason:<br />
+                <asp:RadioButtonList ID="findReasonRadioButtonList" GroupName="findReason" runat="server"></asp:RadioButtonList>
+                <asp:RadioButton ID="fViolentRadioButton" Text=" Violent Content" GroupName="findReason" runat="server" /><br />
+                <asp:RadioButton ID="fHatefulRadioButton" Text=" Hateful Content" GroupName="findReason" runat="server" /><br />
+                <asp:RadioButton ID="fSpamRadioButton" Text=" Spam" GroupName="findReason" runat="server" /><br />
+                <asp:RadioButton ID="fCopyrightedRadioButton" Text=" Copyrighted Content" GroupName="findReason" runat="server" /><br />
+                <asp:RadioButton ID="fOtherRadioButton" GroupName="findReason" runat="server" /> <asp:TextBox ID="userTextBox" class="formstyle" style="width:80%" runat="server"></asp:TextBox>
+
+
+                Additional Information:<br />
+                <asp:TextBox ID="infoTextBox" runat="server" class="formstyle" title="Comment" Height="150px" TextMode="MultiLine"></asp:TextBox><br />
+
+                <asp:Button ID="filterButton" runat="server" class="button formstyle" OnClientClick="javascript: $(#ReportFindPanel).dialog('close');" Width="100%" Text="Submit!" />
             </p>
         </div>
     </header>

@@ -12,7 +12,9 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
-        <h1>Edit Geocache</h1>
+        <h1>Edit Geocache
+            <asp:Button ID="backButton" runat="server" class="button formstyle" Width="20%" Text="Back" OnClick="backButton_Click" />
+        </h1>
         <div class="accordion">
             <h2>Information</h2>
             <div>

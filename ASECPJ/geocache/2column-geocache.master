@@ -8,7 +8,7 @@
         <table>
             <tr>
                 <td><a href="all.aspx">Geocache</a></td>
-                <td><a href="find.aspx">Finds</a></td>
+                <td><a href="record.aspx">My Record</a></td>
                 <td><a href="track.aspx">Location</a></td>
             </tr>
         </table>

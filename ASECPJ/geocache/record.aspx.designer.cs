@@ -11,7 +11,7 @@ namespace ASECPJ.geocache
 {
 
 
-    public partial class find
+    public partial class record
     {
     }
 }

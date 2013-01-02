@@ -68,7 +68,7 @@
                     <asp:RadioButtonList ID="ownerRadioButtonList" GroupName="owner" runat="server"></asp:RadioButtonList>
                     <asp:RadioButton ID="allRadioButton1" Text=" All" GroupName="owner" runat="server" /><br />
                     <asp:RadioButton ID="meRadioButton" Text=" Me" GroupName="owner" runat="server" /><br />
-                    <asp:RadioButton ID="userRadioButton" GroupName="owner" runat="server" /> <asp:TextBox ID="userTextBox" class="formstyle" style="width:80%" runat="server"></asp:TextBox>
+                    <asp:RadioButton ID="userRadioButton" GroupName="owner" runat="server" /> <asp:TextBox ID="userTextBox" class="formstyle" style="width:80%" placeholder="Username" runat="server"></asp:TextBox>
                 </p>
             </div>
         </div>
@@ -76,7 +76,7 @@
             <h2>Filter by keyword</h2>
             <div>
                 <p>
-                    <asp:TextBox ID="keywordTextBox" runat="server" class="formstyle center" title="Keyword"></asp:TextBox>
+                    <asp:TextBox ID="keywordTextBox" runat="server" class="formstyle center" placeholder="Keyword"></asp:TextBox>
                 </p>
             </div>
         </div>

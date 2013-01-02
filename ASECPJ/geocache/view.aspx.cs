@@ -19,5 +19,11 @@ namespace ASECPJ.geocache
 
         }
 
+        protected void editButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("edit.aspx?id=123");
+        }
+
+
     }
 }

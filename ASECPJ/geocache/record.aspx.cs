@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ASECPJ.geocache
 {
-    public partial class find : System.Web.UI.Page
+    public partial class record : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

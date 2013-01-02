@@ -35,9 +35,9 @@
             <div>
                 <p>
                     Name:
-                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" title="Subject"></asp:TextBox>
+                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" placeholder="Name"></asp:TextBox>
                     Description:
-                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" title="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" placeholder="Description" Height="200px" TextMode="MultiLine"></asp:TextBox>
                     Image:
                         <asp:FileUpload ID="FileUpload1" runat="server" /><br />
                     <br />

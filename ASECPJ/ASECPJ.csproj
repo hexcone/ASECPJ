@@ -63,7 +63,8 @@
     <Content Include="geocache\all.aspx" />
     <Content Include="geocache\create.aspx" />
     <Content Include="geocache\edit.aspx" />
-    <Content Include="geocache\find.aspx" />
+    <Content Include="geocache\location.aspx" />
+    <Content Include="geocache\record.aspx" />
     <Content Include="geocache\view.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\backgroundtexture.png" />
@@ -147,12 +148,19 @@
     <Compile Include="geocache\edit.aspx.designer.cs">
       <DependentUpon>edit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="geocache\find.aspx.cs">
-      <DependentUpon>find.aspx</DependentUpon>
+    <Compile Include="geocache\location.aspx.cs">
+      <DependentUpon>location.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="geocache\find.aspx.designer.cs">
-      <DependentUpon>find.aspx</DependentUpon>
+    <Compile Include="geocache\location.aspx.designer.cs">
+      <DependentUpon>location.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geocache\record.aspx.cs">
+      <DependentUpon>record.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geocache\record.aspx.designer.cs">
+      <DependentUpon>record.aspx</DependentUpon>
     </Compile>
     <Compile Include="geocache\view.aspx.cs">
       <DependentUpon>view.aspx</DependentUpon>
