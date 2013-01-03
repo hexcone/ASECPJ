@@ -13,24 +13,6 @@ namespace ASECPJ.geocache {
     public partial class location {
         
         /// <summary>
-        /// latitudeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox latitudeTextBox;
-        
-        /// <summary>
-        /// longitudeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox longitudeTextBox;
-        
-        /// <summary>
         /// Button control.
         /// </summary>
         /// <remarks>
@@ -38,23 +20,5 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button;
-        
-        /// <summary>
-        /// manualLatitudeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox manualLatitudeTextBox;
-        
-        /// <summary>
-        /// manualLongitudeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox manualLongitudeTextBox;
     }
 }

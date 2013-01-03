@@ -63,6 +63,7 @@
     <Content Include="geocache\all.aspx" />
     <Content Include="geocache\create.aspx" />
     <Content Include="geocache\edit.aspx" />
+    <Content Include="geocache\gmap.js" />
     <Content Include="geocache\location.aspx" />
     <Content Include="geocache\record.aspx" />
     <Content Include="geocache\view.aspx" />

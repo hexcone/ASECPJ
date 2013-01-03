@@ -49,13 +49,22 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
         
         /// <summary>
-        /// coordinateTextBox control.
+        /// blockDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox coordinateTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList blockDropDownList;
+        
+        /// <summary>
+        /// levelDropDownList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList levelDropDownList;
         
         /// <summary>
         /// verificationCodeButton control.

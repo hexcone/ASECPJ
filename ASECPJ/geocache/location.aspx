@@ -3,25 +3,52 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         $(function () {
-            $(".accordion").accordion({
-                active: false,
+            $('#tabs').tabs({
                 collapsible: true,
-                heightStyle: "content",
+                fx: { opacity: 'toggle', duration: 500 },
+                show: function (event, ui) {
+                    google.maps.event.trigger(map, 'resize');
+                }
             });
+
         });
+
+
     </script>
 
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <style>
+        #canvas {
+            width: 100%;
+            height: 500px;
+            overflow: visible;
+        }
+
+        .width80 {
+            width: 80%;
+        }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
         <h1>Geocaches Nearby</h1>
-        <div class="accordion">
-            <h2>Locate me!</h2>
-            <div>
+        <div>
+            <p>
                 Latitude:
-                <asp:TextBox ID="latitudeTextBox" class="formstyle" Width="80%" placeholder="Latitude" runat="server"></asp:TextBox><br />
+                <input id="latitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
                 Longitude:
-                <asp:TextBox ID="longitudeTextBox" class="formstyle" Width="80%" placeholder="Longitude" runat="server"></asp:TextBox>
+                <input id="longitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
+            </p>
+        </div>
+        <div id="tabs">
+            <ul>
+                <li><a href="#tabs-1">Locate me!</a></li>
+                <li><a href="#tabs-2">Manual lookup</a></li>
+            </ul>
+            <div id="tabs-1">
                 <p id="demo"></p>
                 <asp:Button ID="Button" runat="server" Text="Locate me!" class="button formstyle" Width="100%" OnClientClick="javascript: getLocation(); return false;" />
                 <div id="mapholder"></div>
@@ -40,7 +67,7 @@
                         lon = position.coords.longitude;
                         latlon = new google.maps.LatLng(lat, lon)
                         mapholder = document.getElementById('mapholder')
-                        mapholder.style.height = '400px';
+                        mapholder.style.height = '500px';
                         mapholder.style.width = '100%';
 
                         var myOptions = {
@@ -52,10 +79,8 @@
                         var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
                         var marker = new google.maps.Marker({ position: latlon, map: map, title: "You are here!" });
 
-                        var x = document.getElementById('<%= latitudeTextBox.ClientID %>');
-                        var y = document.getElementById("<%= longitudeTextBox.ClientID %>");
-                        x.value = lat;
-                        y.value = lon;
+                        latitude.value = lat;
+                        longitude.value = lon;
                     }
 
                     function showError(error) {
@@ -77,14 +102,55 @@
                 </script>
             </div>
 
-            <h2>Manual selection</h2>
-            <div>
-                Latitude:
-                <asp:TextBox ID="manualLatitudeTextBox" class="formstyle" Width="80%" placeholder="Latitude" runat="server"></asp:TextBox><br />
-                Longitude:
-                <asp:TextBox ID="manualLongitudeTextBox" class="formstyle" Width="80%" placeholder="Longitude" runat="server"></asp:TextBox>
+            <div id="tabs-2">
+                <div id="canvas"></div>
+                <br />
+                <script type="text/javascript" src="gmap.js"></script>
             </div>
+
         </div>
+        <br /><br />
+
+        <div>
+            <table style="border: 1px solid black; width: 100%;">
+                <tr>
+                    <th>
+                        <p>Description</p>
+                    </th>
+                    <th>
+                        <p>Placed</p>
+                    </th>
+                    <th>
+                        <p>Found</p>
+                    </th>
+                    <th>
+                        <p>Distance</p>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            <a href="view.aspx">Gator Bait CITO</a><br />
+                            by <a href="#">DoTheNumbers</a> | Block L
+                        </p>
+                    </td>
+                    <td>
+                        <p>9 Mar 13</p>
+                    </td>
+                    <td>
+                        <p>0 times</p>
+                    </td>
+                    <td>
+                        <p>400 meters away</p>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+
+
+
     </header>
 
 </asp:Content>

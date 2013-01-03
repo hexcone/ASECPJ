@@ -6,7 +6,7 @@
             $(".accordion").accordion({
                 collapsible: true,
                 heightStyle: "content",
-            });
+            })
         });
         $(function () {
             $("#slider-range-max").slider({
@@ -20,10 +20,23 @@
             });
             $("#amount").val($("#slider-range-max").slider("value"));
         });
+
+
     </script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <style>
         #slider-range-max {
             width: 30%;
+        }
+
+        #canvas {
+            width: 100%;
+            height: 500px;
+            overflow: visible;
+        }
+
+        .width80 {
+            width: 80%;
         }
     </style>
 </asp:Content>
@@ -47,6 +60,8 @@
                 <div id="slider-range-max"></div>
 
             </div>
+        </div>
+        <div class="accordion">
             <h2>Location</h2>
             <div>
                 <p>
@@ -73,21 +88,29 @@
                     </asp:DropDownList><br />
                     Level: 
                         <asp:DropDownList ID="levelDropDownList" runat="server" class="formstyle center">
-                        <asp:ListItem Value="level1ListItem" Text="Level 1" runat="server" />
-                        <asp:ListItem Value="level2ListItem" Text="Level 2" runat="server" />
-                        <asp:ListItem Value="level3ListItem" Text="Level 3" runat="server" />
-                        <asp:ListItem Value="level4ListItem" Text="Level 4" runat="server" />
-                        <asp:ListItem Value="level5ListItem" Text="Level 5" runat="server" />
-                        <asp:ListItem Value="level6ListItem" Text="Level 6" runat="server" />
-                        <asp:ListItem Value="level7ListItem" Text="Level 7" runat="server" />
-                        <asp:ListItem Value="unLevelListItem" Text="Uncategorized" runat="server" />
-                    </asp:DropDownList><br /><br />
+                            <asp:ListItem Value="level1ListItem" Text="Level 1" runat="server" />
+                            <asp:ListItem Value="level2ListItem" Text="Level 2" runat="server" />
+                            <asp:ListItem Value="level3ListItem" Text="Level 3" runat="server" />
+                            <asp:ListItem Value="level4ListItem" Text="Level 4" runat="server" />
+                            <asp:ListItem Value="level5ListItem" Text="Level 5" runat="server" />
+                            <asp:ListItem Value="level6ListItem" Text="Level 6" runat="server" />
+                            <asp:ListItem Value="level7ListItem" Text="Level 7" runat="server" />
+                            <asp:ListItem Value="unLevelListItem" Text="Uncategorized" runat="server" />
+                        </asp:DropDownList><br />
+                    <br />
 
-                    Coordinates:
-                        <asp:TextBox ID="coordinateTextBox" runat="server" class="formstyle" title="Subject"></asp:TextBox>
-                    <img src="" width="100%" height="500" />
+                    Latitude:
+                <input id="latitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
+                    Longitude:
+                <input id="longitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
                 </p>
+                <div id="canvas"></div>
+                <br />
+                <script type="text/javascript" src="gmap.js"></script>
+
             </div>
+        </div>
+        <div class="accordion">
             <h2>Verification Code</h2>
             <div>
                 <p>
