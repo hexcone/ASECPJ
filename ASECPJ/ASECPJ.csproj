@@ -39,6 +39,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.6.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.6\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -48,6 +57,12 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -61,11 +76,24 @@
     <Content Include="2columnsample.aspx" />
     <Content Include="css\style.css" />
     <Content Include="geocache\all.aspx" />
+    <Content Include="geocache\assets\css\styles.css" />
+    <Content Include="geocache\assets\img\background_tile_1.jpg" />
+    <Content Include="geocache\assets\img\background_tile_2.jpg" />
+    <Content Include="geocache\assets\img\background_tile_3.jpg" />
+    <Content Include="geocache\assets\img\blue_line.jpg" />
+    <Content Include="geocache\assets\img\done.png" />
+    <Content Include="geocache\assets\img\logo.jpg" />
+    <Content Include="geocache\assets\img\tzine.png" />
+    <Content Include="geocache\assets\js\jquery.filedrop.js" />
+    <Content Include="geocache\assets\js\script.js" />
     <Content Include="geocache\create.aspx" />
+    <Content Include="geocache\Global.asax" />
+    <Content Include="geocache\Default.aspx" />
     <Content Include="geocache\edit.aspx" />
     <Content Include="geocache\gmap.js" />
     <Content Include="geocache\location.aspx" />
     <Content Include="geocache\record.aspx" />
+    <Content Include="geocache\uploads\Pig 2.png" />
     <Content Include="geocache\view.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\backgroundtexture.png" />
@@ -97,7 +125,9 @@
     <Content Include="scripts\jquery.form.js" />
     <Content Include="scripts\jquery.searchabledropdown-1.0.8.min.js" />
     <Content Include="scripts\scripts.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="1columnsample.aspx.cs">
@@ -141,6 +171,18 @@
     </Compile>
     <Compile Include="geocache\create.aspx.designer.cs">
       <DependentUpon>create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="geocache\geocache.cs" />
+    <Compile Include="geocache\geocachedb.cs" />
+    <Compile Include="geocache\Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="geocache\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="geocache\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="geocache\edit.aspx.cs">
       <DependentUpon>edit.aspx</DependentUpon>
@@ -206,6 +248,7 @@
     <Content Include="master\2column.master" />
     <Content Include="geocache\1column-geocache.master" />
     <Content Include="geocache\2column-geocache.master" />
+    <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,7 +256,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="geocache\Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

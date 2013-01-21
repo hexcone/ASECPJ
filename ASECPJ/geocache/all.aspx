@@ -30,7 +30,67 @@
     <header>
         <h1>Geocache 
             <asp:Button ID="createButton" runat="server" class="button formstyle" Width="20%" Text="Hide a geocache!" OnClick="createButton_Click" /></h1>
-        <table style="border: 1px solid black; width: 100%;">
+
+
+
+        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource_All" DataKeyNames="geocacheId">
+            
+            <EmptyDataTemplate>
+                <table runat="server" style="">
+                    <tr>
+                        <td>No data was returned.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+            
+            <ItemTemplate>
+                <tr style="">
+                    <td>
+                       <p><asp:HiddenField ID="geocacheIdHiddenField" runat="server" Value='<%# Eval("geocacheId") %>' />
+                           <asp:HyperLink ID="geocacheIdHyperLink" runat="server" NavigateUrl='<%# getUrl(Eval("geocacheId")) %>'>
+                           <asp:Label ID="geocacheNameLabel" runat="server" Text='<%# Eval("geocacheName") %>' />
+                           </asp:HyperLink></p>
+                    </td>
+                    <td>
+                        <p><asp:Label ID="geocacheDateCreatedLabel" runat="server" Text='<%# Eval("geocacheDateCreated") %>' /></p>
+                    </td>
+                    <td>
+                        <p><asp:Label ID="usernameLabel" runat="server" Text='<%# Eval("username") %>' /></p>
+                    </td>
+                </tr>
+            </ItemTemplate>
+
+            <LayoutTemplate>
+                <table runat="server" style="border: 1px solid black; width: 100%;">
+                    <tr runat="server">
+                        <td runat="server">
+                            <table id="itemPlaceholderContainer" runat="server" style="width: 100%;">
+                                <tr runat="server" style="">
+
+                                    <th runat="server"><p>geocacheName</p></th>
+                                    <th runat="server"><p>geocacheDateCreated</p></th>
+                                    <th runat="server"><p>username</p></th>
+                                </tr>
+                                <tr id="itemPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr runat="server">
+                        <td runat="server" style=""></td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+            
+        </asp:ListView>
+        <asp:SqlDataSource ID="SqlDataSource_All" runat="server" ConnectionString="<%$ ConnectionStrings:asecpjConnectionString %>" 
+            ProviderName="<%$ ConnectionStrings:asecpjConnectionString.ProviderName %>" SelectCommand="SELECT geocache.geocacheId, geocache.geocacheName, 
+            DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser"></asp:SqlDataSource>
+
+
+
+
+        <%--<table style="border: 1px solid black; width: 100%;">
             <tr>
                 <th>
                     <p>Description</p>
@@ -56,22 +116,11 @@
                     <p>0 times</p>
                 </td>
             </tr>
-        </table>
+        </table>--%>
     </header>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contentright" runat="server">
     <header>
-        <div class="accordion">
-            <h2>Owner</h2>
-            <div>
-                <p>
-                    <asp:RadioButtonList ID="ownerRadioButtonList" GroupName="owner" runat="server"></asp:RadioButtonList>
-                    <asp:RadioButton ID="allRadioButton1" Text=" All" GroupName="owner" runat="server" /><br />
-                    <asp:RadioButton ID="meRadioButton" Text=" Me" GroupName="owner" runat="server" /><br />
-                    <asp:RadioButton ID="userRadioButton" GroupName="owner" runat="server" /> <asp:TextBox ID="userTextBox" class="formstyle" style="width:80%" placeholder="Username" runat="server"></asp:TextBox>
-                </p>
-            </div>
-        </div>
         <div class="accordion">
             <h2>Filter by keyword</h2>
             <div>
@@ -109,45 +158,45 @@
                 <h2>Block</h2>
                 <p>
                     <asp:CheckBoxList ID="blockCheckBoxList" runat="server">
-                        <asp:ListItem Value="anywhereBlockCheckBox" Text="Anywhere" Selected="True" runat="server" />
-                        <asp:ListItem Value="aListItem" Text="Block A" runat="server" />
-                        <asp:ListItem Value="bListItem" Text="Block B" runat="server" />
-                        <asp:ListItem Value="cListItem" Text="Block C" runat="server" />
-                        <asp:ListItem Value="dListItem" Text="Block D" runat="server" />
-                        <asp:ListItem Value="eListItem" Text="Block E" runat="server" />
-                        <asp:ListItem Value="fListItem" Text="Block F" runat="server" />
-                        <asp:ListItem Value="gListItem" Text="Block G" runat="server" />
-                        <asp:ListItem Value="hListItem" Text="Block H" runat="server" />
-                        <asp:ListItem Value="jListItem" Text="Block J" runat="server" />
-                        <asp:ListItem Value="kListItem" Text="Block K" runat="server" />
-                        <asp:ListItem Value="lListItem" Text="Block L" runat="server" />
-                        <asp:ListItem Value="mListItem" Text="Block M" runat="server" />
-                        <asp:ListItem Value="nListItem" Text="Block N" runat="server" />
-                        <asp:ListItem Value="pListItem" Text="Block P" runat="server" />
-                        <asp:ListItem Value="qListItem" Text="Block Q" runat="server" />
-                        <asp:ListItem Value="rListItem" Text="Block R" runat="server" />
-                        <asp:ListItem Value="sListItem" Text="Block S" runat="server" />
-                        <asp:ListItem Value="unBlockListItem" Text="Uncategorized" runat="server" />
+                        <asp:ListItem Value="*" Text="Anywhere" Selected="True" runat="server" />
+                        <asp:ListItem Value="a" Text="Block A" runat="server" />
+                        <asp:ListItem Value="b" Text="Block B" runat="server" />
+                        <asp:ListItem Value="c" Text="Block C" runat="server" />
+                        <asp:ListItem Value="d" Text="Block D" runat="server" />
+                        <asp:ListItem Value="e" Text="Block E" runat="server" />
+                        <asp:ListItem Value="f" Text="Block F" runat="server" />
+                        <asp:ListItem Value="g" Text="Block G" runat="server" />
+                        <asp:ListItem Value="h" Text="Block H" runat="server" />
+                        <asp:ListItem Value="j" Text="Block J" runat="server" />
+                        <asp:ListItem Value="k" Text="Block K" runat="server" />
+                        <asp:ListItem Value="l" Text="Block L" runat="server" />
+                        <asp:ListItem Value="m" Text="Block M" runat="server" />
+                        <asp:ListItem Value="n" Text="Block N" runat="server" />
+                        <asp:ListItem Value="p" Text="Block P" runat="server" />
+                        <asp:ListItem Value="q" Text="Block Q" runat="server" />
+                        <asp:ListItem Value="r" Text="Block R" runat="server" />
+                        <asp:ListItem Value="s" Text="Block S" runat="server" />
+                        <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
                     </asp:CheckBoxList>
                 </p>
                 <h2>Level</h2>
                 <p>
                     <asp:CheckBoxList ID="levelCheckBoxList1" runat="server">
-                        <asp:ListItem Value="anywhereLevelCheckBox" Text="Anywhere" Selected="True" runat="server" />
-                        <asp:ListItem Value="level1ListItem" Text="Level 1" runat="server" />
-                        <asp:ListItem Value="level2ListItem" Text="Level 2" runat="server" />
-                        <asp:ListItem Value="level3ListItem" Text="Level 3" runat="server" />
-                        <asp:ListItem Value="level4ListItem" Text="Level 4" runat="server" />
-                        <asp:ListItem Value="level5ListItem" Text="Level 5" runat="server" />
-                        <asp:ListItem Value="level6ListItem" Text="Level 6" runat="server" />
-                        <asp:ListItem Value="level7ListItem" Text="Level 7" runat="server" />
-                        <asp:ListItem Value="unLevelListItem" Text="Uncategorized" runat="server" />
+                        <asp:ListItem Value="*" Text="Anywhere" Selected="True" runat="server" />
+                        <asp:ListItem Value="1" Text="Level 1" runat="server" />
+                        <asp:ListItem Value="2" Text="Level 2" runat="server" />
+                        <asp:ListItem Value="3" Text="Level 3" runat="server" />
+                        <asp:ListItem Value="4" Text="Level 4" runat="server" />
+                        <asp:ListItem Value="5" Text="Level 5" runat="server" />
+                        <asp:ListItem Value="6" Text="Level 6" runat="server" />
+                        <asp:ListItem Value="7" Text="Level 7" runat="server" />
+                        <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
                     </asp:CheckBoxList>
                 </p>
             </div>
         </div>
         <br />
-        <asp:Button ID="filterButton" runat="server" class="button formstyle" Width="100%" Text="Filter" />
+        <asp:Button ID="filterButton" runat="server" class="button formstyle" Width="100%" Text="Filter" OnClick="filterButton_Click" />
     </header>
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="footer" runat="server">

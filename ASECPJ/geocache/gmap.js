@@ -26,8 +26,8 @@ var myMarker = new google.maps.Marker({
 // gets the coords when drag event ends
 // then updates the input with the new coords
 google.maps.event.addListener(myMarker, 'dragend', function (evt) {
-    document.getElementById('latitude').value = evt.latLng.lat().toFixed(myCoordsLenght);
-    document.getElementById('longitude').value = evt.latLng.lng().toFixed(myCoordsLenght);
+    document.getElementById('<%= latitude.ClientID %>').Text = evt.latLng.lat().toFixed(myCoordsLenght);
+    document.getElementById('<%= longitude.ClientID %>').Text = evt.latLng.lng().toFixed(myCoordsLenght);
 });
 
 

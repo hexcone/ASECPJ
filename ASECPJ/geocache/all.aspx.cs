@@ -11,6 +11,8 @@ namespace ASECPJ.geocache
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Geocache> geocacheList = GeocacheDb.retrieveGeocache();
+
 
         }
 
@@ -18,5 +20,17 @@ namespace ASECPJ.geocache
         {
             Response.Redirect("create.aspx");
         }
+
+        protected void filterButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected String getUrl(object geocacheId)
+        {
+            return "/view.aspx?id=" + geocacheId;
+
+        }
+
     }
 }

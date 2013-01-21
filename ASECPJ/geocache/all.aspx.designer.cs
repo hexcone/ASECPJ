@@ -22,49 +22,22 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.Button createButton;
         
         /// <summary>
-        /// ownerRadioButtonList control.
+        /// ListView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList ownerRadioButtonList;
+        protected global::System.Web.UI.WebControls.ListView ListView1;
         
         /// <summary>
-        /// allRadioButton1 control.
+        /// SqlDataSource_All control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton allRadioButton1;
-        
-        /// <summary>
-        /// meRadioButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton meRadioButton;
-        
-        /// <summary>
-        /// userRadioButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton userRadioButton;
-        
-        /// <summary>
-        /// userTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userTextBox;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_All;
         
         /// <summary>
         /// keywordTextBox control.

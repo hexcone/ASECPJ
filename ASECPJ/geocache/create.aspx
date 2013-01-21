@@ -15,13 +15,11 @@
                 max: 5,
                 value: 2,
                 slide: function (event, ui) {
-                    $("#amount").val(ui.value);
+                    $("#difficultyLabel").val(ui.value);
                 }
             });
-            $("#amount").val($("#slider-range-max").slider("value"));
+            $("#difficultyLabel").val($("#slider-range-max").slider("value"));
         });
-
-
     </script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <style>
@@ -39,6 +37,10 @@
             width: 80%;
         }
     </style>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
@@ -48,14 +50,22 @@
             <div>
                 <p>
                     Name:
-                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" placeholder="Name"></asp:TextBox>
+                        <asp:TextBox ID="nameTextBox" runat="server" class="formstyle" placeholder="Name"></asp:TextBox>
                     Description:
-                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" placeholder="Description" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="descriptionTextBox" runat="server" class="formstyle" placeholder="Description" Height="200px" TextMode="MultiLine"></asp:TextBox><br />
                     Image:
-                        <asp:FileUpload ID="FileUpload1" runat="server" /><br />
+                        <div id="dropbox">
+                            <span class="message">Drop images here to upload.</span>
+                        </div>
+
+                    <!-- Including the HTML5 Uploader plugin -->
+                    <script src="assets/js/jquery.filedrop.js"></script>
+                    <!-- The main script file -->
+                    <script src="assets/js/script.js"></script>
                     <br />
                     Difficulty:
-                    <input type="text" id="amount" />
+                    <asp:TextBox ID="difficultyLabel" runat="server" ClientIDMode="Static"></asp:TextBox>
+                    <%--<input type="text" id="amount" />--%>
                 </p>
                 <div id="slider-range-max"></div>
 
@@ -67,46 +77,85 @@
                 <p>
                     Block: 
                     <asp:DropDownList ID="blockDropDownList" runat="server" class="formstyle center">
-                        <asp:ListItem Value="aListItem" Text="Block A" runat="server" />
-                        <asp:ListItem Value="bListItem" Text="Block B" runat="server" />
-                        <asp:ListItem Value="cListItem" Text="Block C" runat="server" />
-                        <asp:ListItem Value="dListItem" Text="Block D" runat="server" />
-                        <asp:ListItem Value="eListItem" Text="Block E" runat="server" />
-                        <asp:ListItem Value="fListItem" Text="Block F" runat="server" />
-                        <asp:ListItem Value="gListItem" Text="Block G" runat="server" />
-                        <asp:ListItem Value="hListItem" Text="Block H" runat="server" />
-                        <asp:ListItem Value="jListItem" Text="Block J" runat="server" />
-                        <asp:ListItem Value="kListItem" Text="Block K" runat="server" />
-                        <asp:ListItem Value="lListItem" Text="Block L" runat="server" />
-                        <asp:ListItem Value="mListItem" Text="Block M" runat="server" />
-                        <asp:ListItem Value="nListItem" Text="Block N" runat="server" />
-                        <asp:ListItem Value="pListItem" Text="Block P" runat="server" />
-                        <asp:ListItem Value="qListItem" Text="Block Q" runat="server" />
-                        <asp:ListItem Value="rListItem" Text="Block R" runat="server" />
-                        <asp:ListItem Value="sListItem" Text="Block S" runat="server" />
-                        <asp:ListItem Value="unBlockListItem" Text="Uncategorized" runat="server" />
+                        <asp:ListItem Value="a" Text="Block A" runat="server" />
+                        <asp:ListItem Value="b" Text="Block B" runat="server" />
+                        <asp:ListItem Value="c" Text="Block C" runat="server" />
+                        <asp:ListItem Value="d" Text="Block D" runat="server" />
+                        <asp:ListItem Value="e" Text="Block E" runat="server" />
+                        <asp:ListItem Value="f" Text="Block F" runat="server" />
+                        <asp:ListItem Value="g" Text="Block G" runat="server" />
+                        <asp:ListItem Value="h" Text="Block H" runat="server" />
+                        <asp:ListItem Value="j" Text="Block J" runat="server" />
+                        <asp:ListItem Value="k" Text="Block K" runat="server" />
+                        <asp:ListItem Value="l" Text="Block L" runat="server" />
+                        <asp:ListItem Value="m" Text="Block M" runat="server" />
+                        <asp:ListItem Value="n" Text="Block N" runat="server" />
+                        <asp:ListItem Value="p" Text="Block P" runat="server" />
+                        <asp:ListItem Value="q" Text="Block Q" runat="server" />
+                        <asp:ListItem Value="r" Text="Block R" runat="server" />
+                        <asp:ListItem Value="s" Text="Block S" runat="server" />
+                        <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
                     </asp:DropDownList><br />
                     Level: 
                         <asp:DropDownList ID="levelDropDownList" runat="server" class="formstyle center">
-                            <asp:ListItem Value="level1ListItem" Text="Level 1" runat="server" />
-                            <asp:ListItem Value="level2ListItem" Text="Level 2" runat="server" />
-                            <asp:ListItem Value="level3ListItem" Text="Level 3" runat="server" />
-                            <asp:ListItem Value="level4ListItem" Text="Level 4" runat="server" />
-                            <asp:ListItem Value="level5ListItem" Text="Level 5" runat="server" />
-                            <asp:ListItem Value="level6ListItem" Text="Level 6" runat="server" />
-                            <asp:ListItem Value="level7ListItem" Text="Level 7" runat="server" />
-                            <asp:ListItem Value="unLevelListItem" Text="Uncategorized" runat="server" />
+                            <asp:ListItem Value="1" Text="Level 1" runat="server" />
+                            <asp:ListItem Value="2" Text="Level 2" runat="server" />
+                            <asp:ListItem Value="3" Text="Level 3" runat="server" />
+                            <asp:ListItem Value="4" Text="Level 4" runat="server" />
+                            <asp:ListItem Value="5" Text="Level 5" runat="server" />
+                            <asp:ListItem Value="6" Text="Level 6" runat="server" />
+                            <asp:ListItem Value="7" Text="Level 7" runat="server" />
+                            <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
                         </asp:DropDownList><br />
                     <br />
 
                     Latitude:
-                <input id="latitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
+                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" /><br />
                     Longitude:
-                <input id="longitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
+                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" /><br />
                 </p>
                 <div id="canvas"></div>
                 <br />
-                <script type="text/javascript" src="gmap.js"></script>
+                <script type="text/javascript">
+                    // configuration
+                    var myZoom = 12;
+                    var myMarkerIsDraggable = true;
+                    var myCoordsLenght = 6;
+                    var defaultLat = 1.379530;
+                    var defaultLng = 103.849880;
+
+                    // creates the map
+                    // zooms
+                    // centers the map
+                    // sets the map's type 
+                    var map = new google.maps.Map(document.getElementById('canvas'), {
+                        zoom: myZoom,
+                        center: new google.maps.LatLng(defaultLat, defaultLng),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+
+                    // creates a draggable marker to the given coords
+                    var myMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(defaultLat, defaultLng),
+                        draggable: myMarkerIsDraggable
+                    });
+
+
+                    // adds a listener to the marker
+                    // gets the coords when drag event ends
+                    // then updates the input with the new coords
+                    google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+                        document.getElementById('<%= latitudeTextBox.ClientID %>').value = evt.latLng.lat().toFixed(myCoordsLenght);
+                        document.getElementById('<%= longitudeTextBox.ClientID %>').value = evt.latLng.lng().toFixed(myCoordsLenght);
+                    });
+
+
+                    // centers the map on markers coords
+                    map.setCenter(myMarker.position);
+
+                    // adds the marker on the map
+                    myMarker.setMap(map);
+                </script>
 
             </div>
         </div>
@@ -121,7 +170,7 @@
             </div>
         </div>
         <br />
-        <asp:Button ID="createButton" runat="server" class="button formstyle" Width="100%" Text="Create Geocache!" />
+        <asp:Button ID="createButton" runat="server" class="button formstyle" Width="100%" Text="Create Geocache!" OnClick="createButton_Click" />
     </header>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
