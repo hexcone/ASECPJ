@@ -31,6 +31,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox descriptionTextBox;
         
         /// <summary>
+        /// imageFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload imageFileUpload;
+        
+        /// <summary>
         /// difficultyLabel control.
         /// </summary>
         /// <remarks>
@@ -38,24 +47,6 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox difficultyLabel;
-        
-        /// <summary>
-        /// blockDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList blockDropDownList;
-        
-        /// <summary>
-        /// levelDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList levelDropDownList;
         
         /// <summary>
         /// latitudeTextBox control.
@@ -76,22 +67,13 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox longitudeTextBox;
         
         /// <summary>
-        /// verificationCodeButton control.
+        /// verificationCodeLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button verificationCodeButton;
-        
-        /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label verificationCodeLabel;
         
         /// <summary>
         /// createButton control.

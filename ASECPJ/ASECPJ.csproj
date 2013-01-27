@@ -76,24 +76,11 @@
     <Content Include="2columnsample.aspx" />
     <Content Include="css\style.css" />
     <Content Include="geocache\all.aspx" />
-    <Content Include="geocache\assets\css\styles.css" />
-    <Content Include="geocache\assets\img\background_tile_1.jpg" />
-    <Content Include="geocache\assets\img\background_tile_2.jpg" />
-    <Content Include="geocache\assets\img\background_tile_3.jpg" />
-    <Content Include="geocache\assets\img\blue_line.jpg" />
-    <Content Include="geocache\assets\img\done.png" />
-    <Content Include="geocache\assets\img\logo.jpg" />
-    <Content Include="geocache\assets\img\tzine.png" />
-    <Content Include="geocache\assets\js\jquery.filedrop.js" />
-    <Content Include="geocache\assets\js\script.js" />
     <Content Include="geocache\create.aspx" />
-    <Content Include="geocache\Global.asax" />
-    <Content Include="geocache\Default.aspx" />
     <Content Include="geocache\edit.aspx" />
     <Content Include="geocache\gmap.js" />
     <Content Include="geocache\location.aspx" />
     <Content Include="geocache\record.aspx" />
-    <Content Include="geocache\uploads\Pig 2.png" />
     <Content Include="geocache\view.aspx" />
     <Content Include="home.aspx" />
     <Content Include="images\backgroundtexture.png" />
@@ -174,16 +161,6 @@
     </Compile>
     <Compile Include="geocache\geocache.cs" />
     <Compile Include="geocache\geocachedb.cs" />
-    <Compile Include="geocache\Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="geocache\Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="geocache\Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="geocache\edit.aspx.cs">
       <DependentUpon>edit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -257,7 +234,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="geocache\Scripts\" />
+    <Folder Include="geocache\uploads\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

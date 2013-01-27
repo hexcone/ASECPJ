@@ -49,6 +49,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox keywordTextBox;
         
         /// <summary>
+        /// difficultyLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox difficultyLabel;
+        
+        /// <summary>
         /// sortDropDownList control.
         /// </summary>
         /// <remarks>
@@ -56,24 +65,6 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList sortDropDownList;
-        
-        /// <summary>
-        /// blockCheckBoxList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList blockCheckBoxList;
-        
-        /// <summary>
-        /// levelCheckBoxList1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBoxList levelCheckBoxList1;
         
         /// <summary>
         /// filterButton control.

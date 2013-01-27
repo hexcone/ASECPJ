@@ -14,11 +14,10 @@ public class Geocache
     public string geocacheDescription { get; set; }
     public int geocacheDifficulty { get; set; }
     public string geocacheCoordinates { get; set; }
-    public char geocacheBlock { get; set; }
-    public char geocacheLevel { get; set; }
     public string geocacheImage { get; set; }
     public DateTime geocacheDateCreated { get; set; }
     public string geocacheVerificationId { get; set; }
     public string geocacheStatus { get; set; }
     public int iduser { get; set; }
+
 }

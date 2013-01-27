@@ -11,7 +11,7 @@ namespace ASECPJ.geocache
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Guid geocacheId = new Guid(Request.QueryString["id"]);
         }
 
         protected void reportButton_Click(object sender, EventArgs e)
@@ -22,6 +22,7 @@ namespace ASECPJ.geocache
         protected void editButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("edit.aspx?id=123");
+
         }
 
 

@@ -16,10 +16,10 @@
                 max: 5,
                 values: [1, 5],
                 slide: function (event, ui) {
-                    $("#amount").val("" + ui.values[0] + " - " + ui.values[1]);
+                    $("#difficultyLabel").val("" + ui.values[0] + " - " + ui.values[1]);
                 }
             });
-            $("#amount").val($("#slider-range").slider("values", 0) +
+            $("#difficultyLabel").val($("#slider-range").slider("values", 0) +
                 " - " + $("#slider-range").slider("values", 1));
         });
     </script>
@@ -34,7 +34,7 @@
 
 
         <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource_All" DataKeyNames="geocacheId">
-            
+
             <EmptyDataTemplate>
                 <table runat="server" style="">
                     <tr>
@@ -42,20 +42,26 @@
                     </tr>
                 </table>
             </EmptyDataTemplate>
-            
+
             <ItemTemplate>
                 <tr style="">
                     <td>
-                       <p><asp:HiddenField ID="geocacheIdHiddenField" runat="server" Value='<%# Eval("geocacheId") %>' />
-                           <asp:HyperLink ID="geocacheIdHyperLink" runat="server" NavigateUrl='<%# getUrl(Eval("geocacheId")) %>'>
-                           <asp:Label ID="geocacheNameLabel" runat="server" Text='<%# Eval("geocacheName") %>' />
-                           </asp:HyperLink></p>
+                        <p>
+                            <asp:HiddenField ID="geocacheIdHiddenField" runat="server" Value='<%# Eval("geocacheId") %>' />
+                            <asp:HyperLink ID="geocacheIdHyperLink" runat="server" NavigateUrl='<%# getUrl(Eval("geocacheId")) %>'>
+                                <asp:Label ID="geocacheNameLabel" runat="server" Text='<%# Eval("geocacheName") %>' />
+                            </asp:HyperLink>
+                        </p>
                     </td>
                     <td>
-                        <p><asp:Label ID="geocacheDateCreatedLabel" runat="server" Text='<%# Eval("geocacheDateCreated") %>' /></p>
+                        <p>
+                            <asp:Label ID="geocacheDateCreatedLabel" runat="server" Text='<%# Eval("geocacheDateCreated") %>' />
+                        </p>
                     </td>
                     <td>
-                        <p><asp:Label ID="usernameLabel" runat="server" Text='<%# Eval("username") %>' /></p>
+                        <p>
+                            <asp:Label ID="usernameLabel" runat="server" Text='<%# Eval("username") %>' />
+                        </p>
                     </td>
                 </tr>
             </ItemTemplate>
@@ -67,9 +73,15 @@
                             <table id="itemPlaceholderContainer" runat="server" style="width: 100%;">
                                 <tr runat="server" style="">
 
-                                    <th runat="server"><p>geocacheName</p></th>
-                                    <th runat="server"><p>geocacheDateCreated</p></th>
-                                    <th runat="server"><p>username</p></th>
+                                    <th runat="server">
+                                        <p>geocacheName</p>
+                                    </th>
+                                    <th runat="server">
+                                        <p>geocacheDateCreated</p>
+                                    </th>
+                                    <th runat="server">
+                                        <p>username</p>
+                                    </th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
                                 </tr>
@@ -81,11 +93,10 @@
                     </tr>
                 </table>
             </LayoutTemplate>
-            
+
         </asp:ListView>
-        <asp:SqlDataSource ID="SqlDataSource_All" runat="server" ConnectionString="<%$ ConnectionStrings:asecpjConnectionString %>" 
-            ProviderName="<%$ ConnectionStrings:asecpjConnectionString.ProviderName %>" SelectCommand="SELECT geocache.geocacheId, geocache.geocacheName, 
-            DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource_All" runat="server" ConnectionString="<%$ ConnectionStrings:asecpjConnectionString %>"
+            ProviderName="<%$ ConnectionStrings:asecpjConnectionString.ProviderName %>"></asp:SqlDataSource>
 
 
 
@@ -133,9 +144,8 @@
             <h2>Difficulty</h2>
             <div>
                 <p>
-                    <input type="text" id="amount" class="center" />
+                    <asp:TextBox ID="difficultyLabel" runat="server" ClientIDMode="Static"></asp:TextBox>
                 </p>
-                <br />
                 <div id="slider-range"></div>
             </div>
         </div>
@@ -153,47 +163,6 @@
             </div>
         </div>
         <div class="accordion">
-            <h2>Location</h2>
-            <div>
-                <h2>Block</h2>
-                <p>
-                    <asp:CheckBoxList ID="blockCheckBoxList" runat="server">
-                        <asp:ListItem Value="*" Text="Anywhere" Selected="True" runat="server" />
-                        <asp:ListItem Value="a" Text="Block A" runat="server" />
-                        <asp:ListItem Value="b" Text="Block B" runat="server" />
-                        <asp:ListItem Value="c" Text="Block C" runat="server" />
-                        <asp:ListItem Value="d" Text="Block D" runat="server" />
-                        <asp:ListItem Value="e" Text="Block E" runat="server" />
-                        <asp:ListItem Value="f" Text="Block F" runat="server" />
-                        <asp:ListItem Value="g" Text="Block G" runat="server" />
-                        <asp:ListItem Value="h" Text="Block H" runat="server" />
-                        <asp:ListItem Value="j" Text="Block J" runat="server" />
-                        <asp:ListItem Value="k" Text="Block K" runat="server" />
-                        <asp:ListItem Value="l" Text="Block L" runat="server" />
-                        <asp:ListItem Value="m" Text="Block M" runat="server" />
-                        <asp:ListItem Value="n" Text="Block N" runat="server" />
-                        <asp:ListItem Value="p" Text="Block P" runat="server" />
-                        <asp:ListItem Value="q" Text="Block Q" runat="server" />
-                        <asp:ListItem Value="r" Text="Block R" runat="server" />
-                        <asp:ListItem Value="s" Text="Block S" runat="server" />
-                        <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
-                    </asp:CheckBoxList>
-                </p>
-                <h2>Level</h2>
-                <p>
-                    <asp:CheckBoxList ID="levelCheckBoxList1" runat="server">
-                        <asp:ListItem Value="*" Text="Anywhere" Selected="True" runat="server" />
-                        <asp:ListItem Value="1" Text="Level 1" runat="server" />
-                        <asp:ListItem Value="2" Text="Level 2" runat="server" />
-                        <asp:ListItem Value="3" Text="Level 3" runat="server" />
-                        <asp:ListItem Value="4" Text="Level 4" runat="server" />
-                        <asp:ListItem Value="5" Text="Level 5" runat="server" />
-                        <asp:ListItem Value="6" Text="Level 6" runat="server" />
-                        <asp:ListItem Value="7" Text="Level 7" runat="server" />
-                        <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
-                    </asp:CheckBoxList>
-                </p>
-            </div>
         </div>
         <br />
         <asp:Button ID="filterButton" runat="server" class="button formstyle" Width="100%" Text="Filter" OnClick="filterButton_Click" />

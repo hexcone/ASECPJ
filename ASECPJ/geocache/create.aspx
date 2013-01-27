@@ -43,6 +43,7 @@
         <![endif]-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
+
     <header>
         <h1>Hide A Geocache</h1>
         <div class="accordion">
@@ -53,15 +54,9 @@
                         <asp:TextBox ID="nameTextBox" runat="server" class="formstyle" placeholder="Name"></asp:TextBox>
                     Description:
                         <asp:TextBox ID="descriptionTextBox" runat="server" class="formstyle" placeholder="Description" Height="200px" TextMode="MultiLine"></asp:TextBox><br />
-                    Image:
-                        <div id="dropbox">
-                            <span class="message">Drop images here to upload.</span>
-                        </div>
-
-                    <!-- Including the HTML5 Uploader plugin -->
-                    <script src="assets/js/jquery.filedrop.js"></script>
-                    <!-- The main script file -->
-                    <script src="assets/js/script.js"></script>
+                    Image:<br />
+                    <asp:FileUpload ID="imageFileUpload" runat="server" />
+                    <br />
                     <br />
                     Difficulty:
                     <asp:TextBox ID="difficultyLabel" runat="server" ClientIDMode="Static"></asp:TextBox>
@@ -75,40 +70,6 @@
             <h2>Location</h2>
             <div>
                 <p>
-                    Block: 
-                    <asp:DropDownList ID="blockDropDownList" runat="server" class="formstyle center">
-                        <asp:ListItem Value="a" Text="Block A" runat="server" />
-                        <asp:ListItem Value="b" Text="Block B" runat="server" />
-                        <asp:ListItem Value="c" Text="Block C" runat="server" />
-                        <asp:ListItem Value="d" Text="Block D" runat="server" />
-                        <asp:ListItem Value="e" Text="Block E" runat="server" />
-                        <asp:ListItem Value="f" Text="Block F" runat="server" />
-                        <asp:ListItem Value="g" Text="Block G" runat="server" />
-                        <asp:ListItem Value="h" Text="Block H" runat="server" />
-                        <asp:ListItem Value="j" Text="Block J" runat="server" />
-                        <asp:ListItem Value="k" Text="Block K" runat="server" />
-                        <asp:ListItem Value="l" Text="Block L" runat="server" />
-                        <asp:ListItem Value="m" Text="Block M" runat="server" />
-                        <asp:ListItem Value="n" Text="Block N" runat="server" />
-                        <asp:ListItem Value="p" Text="Block P" runat="server" />
-                        <asp:ListItem Value="q" Text="Block Q" runat="server" />
-                        <asp:ListItem Value="r" Text="Block R" runat="server" />
-                        <asp:ListItem Value="s" Text="Block S" runat="server" />
-                        <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
-                    </asp:DropDownList><br />
-                    Level: 
-                        <asp:DropDownList ID="levelDropDownList" runat="server" class="formstyle center">
-                            <asp:ListItem Value="1" Text="Level 1" runat="server" />
-                            <asp:ListItem Value="2" Text="Level 2" runat="server" />
-                            <asp:ListItem Value="3" Text="Level 3" runat="server" />
-                            <asp:ListItem Value="4" Text="Level 4" runat="server" />
-                            <asp:ListItem Value="5" Text="Level 5" runat="server" />
-                            <asp:ListItem Value="6" Text="Level 6" runat="server" />
-                            <asp:ListItem Value="7" Text="Level 7" runat="server" />
-                            <asp:ListItem Value="u" Text="Uncategorized" runat="server" />
-                        </asp:DropDownList><br />
-                    <br />
-
                     Latitude:
                     <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" /><br />
                     Longitude:
@@ -146,15 +107,15 @@
                     // then updates the input with the new coords
                     google.maps.event.addListener(myMarker, 'dragend', function (evt) {
                         document.getElementById('<%= latitudeTextBox.ClientID %>').value = evt.latLng.lat().toFixed(myCoordsLenght);
-                        document.getElementById('<%= longitudeTextBox.ClientID %>').value = evt.latLng.lng().toFixed(myCoordsLenght);
-                    });
+                                document.getElementById('<%= longitudeTextBox.ClientID %>').value = evt.latLng.lng().toFixed(myCoordsLenght);
+                            });
 
 
-                    // centers the map on markers coords
-                    map.setCenter(myMarker.position);
+                            // centers the map on markers coords
+                            map.setCenter(myMarker.position);
 
-                    // adds the marker on the map
-                    myMarker.setMap(map);
+                            // adds the marker on the map
+                            myMarker.setMap(map);
                 </script>
 
             </div>
@@ -163,9 +124,10 @@
             <h2>Verification Code</h2>
             <div>
                 <p>
-                    <asp:Button ID="verificationCodeButton" runat="server" class="button formstyle" Width="30%" Text="Generate Verification Code!" /><br />
-                    <asp:Label ID="Label1" runat="server" Text="TY6fh45"></asp:Label><br />
-                    *Important* Hide this together with your Geocache!
+                    <asp:Label ID="verificationCodeLabel" runat="server" Text="" Font-Bold="True" Font-Size="Large"></asp:Label><br /><br />
+                    *Important* <br />
+                    This is your unique verification code for your geocache<br />
+                    Please hide this together with your geocache
                 </p>
             </div>
         </div>

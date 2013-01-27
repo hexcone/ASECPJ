@@ -16,8 +16,8 @@ public class GeocacheDb
 
     private static string connectionString = ConfigurationManager.ConnectionStrings["asecpjConnectionString"].ConnectionString;
 
-    public static Guid createGeocache(string geocacheName, string geocacheDescription, int geocacheDifficulty, string geocacheCoordinates, char geocacheBlock, 
-        char geocacheLevel, string geocacheImage, DateTime geocacheDateCreated, string geocacheVerificationId, string geocacheStatus)
+    public static Guid createGeocache(string geocacheName, string geocacheDescription, int geocacheDifficulty, string geocacheCoordinates, 
+        string geocacheImage, DateTime geocacheDateCreated, string geocacheVerificationId, string geocacheStatus)
     {
         //if (Membership.GetUser() != null)
         //{
@@ -30,10 +30,10 @@ public class GeocacheDb
         con.Open();
         MySqlCommand cmd = new MySqlCommand();
         cmd.Connection = con;
-        cmd.CommandText = "INSERT INTO geocache(geocacheId, geocacheName, geocacheDescription, geocacheDifficulty, geocacheCoordinates, geocacheBlock, " +
-            "geocacheLevel, geocacheImage, geocacheDateCreated, geocacheVerificationId, geocacheStatus, iduser) VALUES (@geocacheId, " +
-            "@geocacheName, @geocacheDescription, @geocacheDifficulty, @geocacheCoordinates, @geocacheBlock, " +
-            "@geocacheLevel, @geocacheImage, @geocacheDateCreated, @geocacheVerificationId, " +
+        cmd.CommandText = "INSERT INTO geocache(geocacheId, geocacheName, geocacheDescription, geocacheDifficulty, geocacheCoordinates, " +
+            "geocacheImage, geocacheDateCreated, geocacheVerificationId, geocacheStatus, iduser) VALUES (@geocacheId, " +
+            "@geocacheName, @geocacheDescription, @geocacheDifficulty, @geocacheCoordinates, " +
+            "@geocacheImage, @geocacheDateCreated, @geocacheVerificationId, " +
             "@geocacheStatus, @iduser)";
         cmd.Prepare();
 
@@ -42,8 +42,6 @@ public class GeocacheDb
         cmd.Parameters.AddWithValue("@geocacheDescription", geocacheDescription);
         cmd.Parameters.AddWithValue("@geocacheDifficulty", geocacheDifficulty);
         cmd.Parameters.AddWithValue("@geocacheCoordinates", geocacheCoordinates);
-        cmd.Parameters.AddWithValue("@geocacheBlock", geocacheBlock);
-        cmd.Parameters.AddWithValue("@geocacheLevel", geocacheLevel);
         cmd.Parameters.AddWithValue("@geocacheImage", geocacheImage);
         cmd.Parameters.AddWithValue("@geocacheDateCreated", geocacheDateCreated);
         cmd.Parameters.AddWithValue("@geocacheVerificationId", geocacheVerificationId);
@@ -92,8 +90,7 @@ public class GeocacheDb
         return geocacheList;
     }
 
-    public static List<Geocache> retrieveGeocache(string keyword, int[] geocacheDifficulty, string sortBy, char[] geocacheBlock, 
-        char[] geocacheLevel)
+    public static List<Geocache> retrieveGeocache(string geocacheId)
     {
         //if (Membership.GetUser() != null)
         //{
@@ -107,52 +104,10 @@ public class GeocacheDb
         con.Open();
         MySqlCommand cmd = new MySqlCommand();
         cmd.Connection = con;
-        
-        //if keyword if not null, search user table for match, return iduser[]
-        int[] iduser = {1,2,3};
+        cmd.CommandText = "SELECT geocacheId, geocacheName, geocacheDateCreated FROM geocache WHERE geocacheId=@geocacheId";
 
-        cmd.CommandText = "SELECT geocacheId, geocacheName, geocacheDateCreated FROM geocache WHERE (geocacheDifficulty BETWEEN @geocacheDifficultyBottomBound AND @geocacheDifficultyTopBound) ";
-        if (!keyword.Equals(null))
-        {
-            cmd.CommandText += "AND (FIND_IN_SET (iduser, @iduser) OR geocacheName=@geocacheName OR geocacheDescription=@geocacheDescription) ";
-        }
-        if (!geocacheBlock.Equals(null))
-        {
-            cmd.CommandText += "AND FIND_IN_SET (geocacheBlock, @geocacheBlock) ";
-        }
-        if (!geocacheLevel.Equals(null))
-        {
-            cmd.CommandText += "AND FIND_IN_SET (geocacheLevel, @geocacheLevel) ";
-        }
-        if (!sortBy.Equals(null))
-        {
-            if (sortBy.Equals("Newest First"))
-            {
-                cmd.CommandText += "ORDER BY geocacheDateCreated DESC";
-            }
-            if (sortBy.Equals("Oldest First"))
-            {
-                cmd.CommandText += "ORDER BY geocacheDateCreated ASC";
-            }
-        }
         cmd.Prepare();
-
-        cmd.Parameters.AddWithValue("@geocacheDifficultyBottomBound", geocacheDifficulty[0]);
-        cmd.Parameters.AddWithValue("@geocacheDifficultyTopBound", geocacheDifficulty[1]);
-        if (!keyword.Equals(null))
-        {
-            cmd.Parameters.AddWithValue("@iduser", string.Join(",", iduser));
-            cmd.Parameters.AddWithValue("@geocacheName", keyword);
-            cmd.Parameters.AddWithValue("@geocacheDescription", keyword);
-        }
-        if (!geocacheBlock.Equals(null))
-        {
-            cmd.Parameters.AddWithValue("@geocacheBlock", string.Join(",", geocacheBlock));
-        }
-        if (!geocacheLevel.Equals(null))
-        {
-            cmd.Parameters.AddWithValue("@geocacheLevel", string.Join(",", geocacheLevel));
-        }
+        cmd.Parameters.AddWithValue("@geocacheId", geocacheId);
 
         reader = cmd.ExecuteReader();
         while (reader.Read())
