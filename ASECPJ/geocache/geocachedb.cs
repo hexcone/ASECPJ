@@ -14,6 +14,8 @@ public class GeocacheDb
     protected static int iduser = 2;
     protected static Guid geocacheId;
     protected static Guid findId;
+    protected static Guid geocacheReportId;
+    protected static Guid findReportId;
 
     private static string connectionString = ConfigurationManager.ConnectionStrings["asecpjConnectionString"].ConnectionString;
 
@@ -216,6 +218,70 @@ public class GeocacheDb
         cmd.ExecuteNonQuery();
 
         return findId;
+    }
+
+    public static Guid createGeocacheReport(string geocacheReportReason, string geocacheReportComment, string geocacheId)
+    {
+        //if (Membership.GetUser() != null)
+        //{
+        //    m = Membership.GetUser();
+        //    // (retrieve memberId here) memberId = new int(m.ProviderUserKey.ToString());
+        //}
+        geocacheReportId = Guid.NewGuid();
+
+        MySqlConnection con = new MySqlConnection(connectionString);
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "INSERT INTO geocacheReport(geocacheReportId, geocacheReportReason, geocacheReportComment, geocacheReportStatus, geocacheReportDateTime, " +
+            "geocacheId, iduser) VALUES (@geocacheReportId, " +
+            "@geocacheReportReason, @geocacheReportComment, @geocacheReportStatus, @geocacheReportDateTime, @geocacheId, @iduser)";
+        cmd.Prepare();
+
+        cmd.Parameters.AddWithValue("@geocacheReportId", geocacheReportId.ToString());
+        cmd.Parameters.AddWithValue("@geocacheReportReason", geocacheReportReason);
+        cmd.Parameters.AddWithValue("@geocacheReportComment", geocacheReportComment);
+        cmd.Parameters.AddWithValue("@geocacheReportStatus", "pending");
+        cmd.Parameters.AddWithValue("@geocacheReportDateTime", DateTime.Now);
+        cmd.Parameters.AddWithValue("@geocacheId", geocacheId);
+        cmd.Parameters.AddWithValue("@iduser", iduser);
+
+
+        cmd.ExecuteNonQuery();
+
+        return geocacheReportId;
+    }
+
+    public static Guid createFindReport(string findReportReason, string findReportComment, string findId)
+    {
+        //if (Membership.GetUser() != null)
+        //{
+        //    m = Membership.GetUser();
+        //    // (retrieve memberId here) memberId = new int(m.ProviderUserKey.ToString());
+        //}
+        findReportId = Guid.NewGuid();
+
+        MySqlConnection con = new MySqlConnection(connectionString);
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "INSERT INTO findReport(findReportId, findReportReason, findReportComment, findReportStatus, findReportDateTime, " +
+            "findId, iduser) VALUES (@findReportId, " +
+            "@findReportReason, @findReportComment, @findReportStatus, @findReportDateTime, @findId, @iduser)";
+        cmd.Prepare();
+
+        cmd.Parameters.AddWithValue("@findReportId", findReportId.ToString());
+        cmd.Parameters.AddWithValue("@findReportReason", findReportReason);
+        cmd.Parameters.AddWithValue("@findReportComment", findReportComment);
+        cmd.Parameters.AddWithValue("@findReportStatus", "pending");
+        cmd.Parameters.AddWithValue("@findReportDateTime", DateTime.Now);
+        cmd.Parameters.AddWithValue("@findId", geocacheId);
+        cmd.Parameters.AddWithValue("@iduser", iduser);
+
+
+        cmd.ExecuteNonQuery();
+
+        return findReportId;
     }
 
     /*

@@ -12,7 +12,6 @@ namespace ASECPJ.geocache
         string geocacheId;
         string username;
         Geocache geocache;
-
         string findName;
         string findDescription;
         string findImage;
@@ -132,6 +131,16 @@ namespace ASECPJ.geocache
         protected string getFindDateCreated(string findDateCreated)
         {
             return DateTime.Parse(findDateCreated).ToLongDateString();
+        }
+
+        protected void reportGeocacheButton_Click(object sender, EventArgs e)
+        {
+            GeocacheDb.createGeocacheReport(geocacheReasonRadioButtonList.SelectedValue, reportGeocacheTextBox.Text, geocacheId);
+        }
+
+        protected void filterButton_Click(object sender, EventArgs e)
+        {
+            GeocacheDb.createFindReport(findReasonRadioButtonList.SelectedValue, reportFindTextBox.Text, findIdHiddenField.Value);
         }
 
 

@@ -148,85 +148,85 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.RadioButtonList geocacheReasonRadioButtonList;
         
         /// <summary>
-        /// gViolentRadioButton control.
+        /// gViolentListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton gViolentRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem gViolentListItem;
         
         /// <summary>
-        /// gHatefulRadioButton control.
+        /// gHatefulListItemn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton gHatefulRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem gHatefulListItemn;
         
         /// <summary>
-        /// gSpamRadioButton control.
+        /// gSpamListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton gSpamRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem gSpamListItem;
         
         /// <summary>
-        /// gCopyrightedRadioButton control.
+        /// gCopyrightedListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton gCopyrightedRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem gCopyrightedListItem;
         
         /// <summary>
-        /// gLostRadioButton control.
+        /// gLostListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton gLostRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem gLostListItem;
         
         /// <summary>
-        /// gOtherRadioButton control.
+        /// gOtherListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton gOtherRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem gOtherListItem;
         
         /// <summary>
-        /// TextBox1 control.
+        /// reportGeocacheTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox reportGeocacheTextBox;
         
         /// <summary>
-        /// TextBox2 control.
+        /// reportGeocacheButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.Button reportGeocacheButton;
         
         /// <summary>
-        /// Button3 control.
+        /// findIdHiddenField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.HiddenField findIdHiddenField;
         
         /// <summary>
         /// findReasonRadioButtonList control.
@@ -238,67 +238,58 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.RadioButtonList findReasonRadioButtonList;
         
         /// <summary>
-        /// fViolentRadioButton control.
+        /// fViolentListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton fViolentRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem fViolentListItem;
         
         /// <summary>
-        /// fHatefulRadioButton control.
+        /// fHatefulListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton fHatefulRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem fHatefulListItem;
         
         /// <summary>
-        /// fSpamRadioButton control.
+        /// fSpamListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton fSpamRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem fSpamListItem;
         
         /// <summary>
-        /// fCopyrightedRadioButton control.
+        /// fCopyrightedListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton fCopyrightedRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem fCopyrightedListItem;
         
         /// <summary>
-        /// fOtherRadioButton control.
+        /// fOtherListItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton fOtherRadioButton;
+        protected global::System.Web.UI.WebControls.ListItem fOtherListItem;
         
         /// <summary>
-        /// userTextBox control.
+        /// reportFindTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox userTextBox;
-        
-        /// <summary>
-        /// infoTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox infoTextBox;
+        protected global::System.Web.UI.WebControls.TextBox reportFindTextBox;
         
         /// <summary>
         /// filterButton control.

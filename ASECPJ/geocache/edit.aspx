@@ -6,22 +6,8 @@
             $(".accordion").accordion({
                 collapsible: true,
                 heightStyle: "content",
-            });
+            })
         });
-
-        $(function () {
-            $("#slider-range-max").slider({
-                range: "max",
-                min: 1,
-                max: 5,
-                value: 2,
-                slide: function (event, ui) {
-                    $("#amount").val(ui.value);
-                }
-            });
-            $("#amount").val($("#slider-range-max").slider("value"));
-        });
-
     </script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <style>
@@ -39,6 +25,10 @@
             width: 80%;
         }
     </style>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!--[if lt IE 9]>
+          <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
@@ -50,75 +40,76 @@
             <div>
                 <p>
                     Name:
-                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" title="Subject" Text="Gator Bait CITO"></asp:TextBox>
+                        <asp:TextBox ID="nameTextBox" runat="server" class="formstyle" title="Subject" Text="<%# getGeocacheName() %>"></asp:TextBox>
                     Description:
-                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" title="Comment" Height="200px" TextMode="MultiLine">In this event, we will be taking a different approach to a Cache In/Trash Out Event. This is a kayak/canoe event that will take place in the Saltwater Marsh of Gulf Shores and Gulf State Park. As a point of reference, we will be near The Original Oyster House for this event. We hope for the Geoweekend to consist of five event caches, as listed below.
-
-ASPGC Event (Friday, March 8) – This one will probably be in our Classroom or Activities building, but the organizer (Amy Bannick Griffin) of it may opt for some other location.   This will be an evening event.
-
-Hardcore Event (Saturday, March 9) - This event will take place Saturday morning and is where some of the more dedicated and "Hardcore" cachers will head out through the swamp to get our Hardcore series.  I may just have to hide another one or two out there to tempt some repeat visitors.
-
-Picnicking with the Gators Event (Saturday, March 9)- This will be a lunch time event for the survivors of the Hardcore Event and those to scared to go "Hardcore". It will be held at Lake Shelby and hosted by Smarky (Sandy Harris).</asp:TextBox>
-                    Image:
-                    <section id="workbody">
-                        <img src="../images/geocache/gator.jpg" alt="sky1">
-                    </section>
-                    <asp:FileUpload ID="FileUpload1" runat="server" /><br />
+                        <asp:TextBox ID="descriptionTextBox" runat="server" class="formstyle" title="Comment" Height="200px" TextMode="MultiLine" Text="<%# getGeocacheDescription() %>"></asp:TextBox>
+                    Image:<br />
+                    <asp:FileUpload ID="imageFileUpload" runat="server" />
+                    <br />
                     <br />
                     Difficulty:
-                    <input type="text" id="amount" />
+                    <asp:DropDownList ID="difficultyDropDownList" runat="server">
+                        <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="4" Value="4"></asp:ListItem>
+                        <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                    </asp:DropDownList>
                 </p>
-                
-                <div id="slider-range-max"></div>
             </div>
         </div>
         <div class="accordion">
             <h2>Location</h2>
             <div>
                 <p>
-                    Block: 
-                    <asp:DropDownList ID="blockDropDownList" runat="server" class="formstyle center">
-                        <asp:ListItem Value="aListItem" Text="Block A" runat="server" />
-                        <asp:ListItem Value="bListItem" Text="Block B" runat="server" />
-                        <asp:ListItem Value="cListItem" Text="Block C" runat="server" />
-                        <asp:ListItem Value="dListItem" Text="Block D" runat="server" />
-                        <asp:ListItem Value="eListItem" Text="Block E" runat="server" />
-                        <asp:ListItem Value="fListItem" Text="Block F" runat="server" />
-                        <asp:ListItem Value="gListItem" Text="Block G" runat="server" />
-                        <asp:ListItem Value="hListItem" Text="Block H" runat="server" />
-                        <asp:ListItem Value="jListItem" Text="Block J" runat="server" />
-                        <asp:ListItem Value="kListItem" Text="Block K" runat="server" />
-                        <asp:ListItem Value="lListItem" Text="Block L" runat="server" />
-                        <asp:ListItem Value="mListItem" Text="Block M" runat="server" />
-                        <asp:ListItem Value="nListItem" Text="Block N" runat="server" />
-                        <asp:ListItem Value="pListItem" Text="Block P" runat="server" />
-                        <asp:ListItem Value="qListItem" Text="Block Q" runat="server" />
-                        <asp:ListItem Value="rListItem" Text="Block R" runat="server" />
-                        <asp:ListItem Value="sListItem" Text="Block S" runat="server" />
-                        <asp:ListItem Value="unBlockListItem" Text="Uncategorized" runat="server" />
-                    </asp:DropDownList><br />
-                    Level: 
-                        <asp:DropDownList ID="levelDropDownList" runat="server" class="formstyle center">
-                            <asp:ListItem Value="level1ListItem" Text="Level 1" runat="server" />
-                            <asp:ListItem Value="level2ListItem" Text="Level 2" runat="server" />
-                            <asp:ListItem Value="level3ListItem" Text="Level 3" runat="server" />
-                            <asp:ListItem Value="level4ListItem" Text="Level 4" runat="server" />
-                            <asp:ListItem Value="level5ListItem" Text="Level 5" runat="server" />
-                            <asp:ListItem Value="level6ListItem" Text="Level 6" runat="server" />
-                            <asp:ListItem Value="level7ListItem" Text="Level 7" runat="server" />
-                            <asp:ListItem Value="unLevelListItem" Text="Uncategorized" runat="server" />
-                        </asp:DropDownList><br />
-                    <br />
-
                     Latitude:
-                <input id="latitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
+                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" Text="<%# getGeocacheLatitude() %>" /><br />
                     Longitude:
-                <input id="longitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
+                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" Text="<%# getGeocacheLongitude() %>"/><br />
                 </p>
                 <div id="canvas"></div>
                 <br />
-                <script type="text/javascript" src="gmap.js"></script>
-                </p>
+                <script type="text/javascript">
+                    // configuration
+                    var myZoom = 12;
+                    var myMarkerIsDraggable = true;
+                    var myCoordsLenght = 6;
+                    var defaultLat = "<%# getGeocacheLatitude() %>";
+                    var defaultLng = "<%# getGeocacheLongitude() %>";
+
+                    // creates the map
+                    // zooms
+                    // centers the map
+                    // sets the map's type 
+                    var map = new google.maps.Map(document.getElementById('canvas'), {
+                        zoom: myZoom,
+                        center: new google.maps.LatLng(defaultLat, defaultLng),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+
+                    // creates a draggable marker to the given coords
+                    var myMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(defaultLat, defaultLng),
+                        draggable: myMarkerIsDraggable
+                    });
+
+
+                    // adds a listener to the marker
+                    // gets the coords when drag event ends
+                    // then updates the input with the new coords
+                    google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+                        document.getElementById('<%= latitudeTextBox.ClientID %>').value = evt.latLng.lat().toFixed(myCoordsLenght);
+                        document.getElementById('<%= longitudeTextBox.ClientID %>').value = evt.latLng.lng().toFixed(myCoordsLenght);
+                    });
+
+
+                    // centers the map on markers coords
+                    map.setCenter(myMarker.position);
+
+                    // adds the marker on the map
+                    myMarker.setMap(map);
+                </script>
+
             </div>
         </div>
         <div class="accordion">

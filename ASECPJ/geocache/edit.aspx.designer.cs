@@ -22,49 +22,58 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.Button backButton;
         
         /// <summary>
-        /// subjectTextBox control.
+        /// nameTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox subjectTextBox;
+        protected global::System.Web.UI.WebControls.TextBox nameTextBox;
         
         /// <summary>
-        /// commentTextBox control.
+        /// descriptionTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox commentTextBox;
+        protected global::System.Web.UI.WebControls.TextBox descriptionTextBox;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// imageFileUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.FileUpload imageFileUpload;
         
         /// <summary>
-        /// blockDropDownList control.
+        /// difficultyDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList blockDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList difficultyDropDownList;
         
         /// <summary>
-        /// levelDropDownList control.
+        /// latitudeTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList levelDropDownList;
+        protected global::System.Web.UI.WebControls.TextBox latitudeTextBox;
+        
+        /// <summary>
+        /// longitudeTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox longitudeTextBox;
         
         /// <summary>
         /// verificationCodeButton control.
