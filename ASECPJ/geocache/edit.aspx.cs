@@ -9,10 +9,13 @@ namespace ASECPJ.geocache
 {
     public partial class edit : System.Web.UI.Page
     {
-        int geocacheId;
+        string geocacheId;
+        Geocache geocache;
         protected void Page_Load(object sender, EventArgs e)
         {
-            geocacheId = Int32.Parse(Request.QueryString["id"]);
+            geocacheId = Request.QueryString["id"];
+            geocache = GeocacheDb.retrieveGeocache(geocacheId);
+
         }
 
         protected void backButton_Click(object sender, EventArgs e)

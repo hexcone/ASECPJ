@@ -49,32 +49,21 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
-        <h1>Gator Bait CITO
+        <h1>
+            <asp:Label ID="geocacheNameLabel" runat="server" Text="<%# getGeocacheName() %>"></asp:Label>
             <asp:Button ID="reportButton" runat="server" class="button formstyle" Width="20%" Text="Report geocache" OnClientClick="javascript: $('#ReportGeocachePanel').dialog('open'); return false;" />
             <asp:Button ID="editButton" runat="server" class="button formstyle" Width="20%" Text="Edit geocache" OnClick="editButton_Click" />
         </h1>
-        <h2><a href="#">DoTheNumbers</a> | School of Information Technology | 9 Mar 13</h2>
-
+        <h2>Created by <a href="#">
+            <asp:Label ID="usernameLabel" runat="server" Text="<%# getUsername() %>"></asp:Label></a> on
+            <asp:Label ID="geocacheDateCreatedLabel" runat="server" Text="<%# getGeocacheDateCreated() %>"></asp:Label></h2>
         <section id="workbody">
-            <img src="../images/geocache/gator.jpg" alt="sky1">
+            <asp:Image ID="geocacheImage" runat="server" ImageUrl="<%# getGeocacheImage() %>" />
         </section>
-
         <p>
-            In this event, we will be taking a different approach to a Cache In/Trash Out Event. This is a kayak/canoe event that will take place in the Saltwater
-            Marsh of Gulf Shores and Gulf State Park. As a point of reference, we will be near The Original Oyster House for this event.<br />
-            We hope for the Geoweekend to consist of five event caches, as listed below.<br />
+            <asp:TextBox ID="geocacheDescriptionTextBox" runat="server" TextMode="MultiLine" Text="<%# getGeocacheDescription() %>" ReadOnly="True" BorderStyle="None"></asp:TextBox>
+            <br />
         </p>
-        <ul>
-            <li>ASPGC Event (Friday, March 8) – This one will probably be in our Classroom or Activities building, but the organizer (Amy Bannick Griffin) of it 
-                may opt for some other location.   This will be an evening event.</li>
-
-            <li>Hardcore Event (Saturday, March 9) - This event will take place Saturday morning and is where some of the more dedicated and "Hardcore" cachers 
-                will head out through the swamp to get our Hardcore series.  I may just have to hide another one or two out there to tempt some repeat visitors. </li>
-
-            <li>Picnicking with the Gators Event (Saturday, March 9)- This will be a lunch time event for the survivors of the Hardcore Event and those to scared 
-                to go "Hardcore". It will be held at Lake Shelby and hosted by Smarky (Sandy Harris).</li>
-        </ul>
-
         <hr />
 
         <h1>Finds</h1>
@@ -82,16 +71,16 @@
             <h2>Add your find!</h2>
             <div>
                 <p>
-                    Subject:
-                        <asp:TextBox ID="subjectTextBox" runat="server" class="formstyle" placeholder="Subject"></asp:TextBox>
-                    Comment:
-                        <asp:TextBox ID="commentTextBox" runat="server" class="formstyle" placeholder="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
-                    Image:
-                        <asp:FileUpload ID="FileUpload1" runat="server" /><br />
+                    Subject:<br />
+                    <asp:TextBox ID="findNameTextBox" runat="server" class="formstyle" placeholder="Subject"></asp:TextBox><br />
+                    Comment:<br />
+                    <asp:TextBox ID="findDescriptionTextBox" runat="server" class="formstyle" placeholder="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox><br />
                     <br />
-                    Verification Code: (Found with your geocache!)
-                        <asp:TextBox ID="verificationCodeTextBox" runat="server" class="formstyle" title="Verification Code"></asp:TextBox>
-                    <asp:Button ID="submitButton" runat="server" class="button formstyle" Width="30%" Text="I've found a geocache!" />
+                    Image:<asp:FileUpload ID="findImageFileUpload" runat="server" /><br />
+                    <br />
+                    Verification Code: (Found with your geocache!)<br />
+                    <asp:TextBox ID="verificationCodeTextBox" runat="server" class="formstyle" title="Verification Code"></asp:TextBox><br />
+                    <asp:Button ID="submitButton" runat="server" class="button formstyle" Width="30%" Text="I've found a geocache!" OnClick="submitButton_Click" />
                 </p>
             </div>
         </div>
@@ -99,35 +88,40 @@
         <br />
         <br />
 
-        <div class="commentBox">
-            <aside class="comment">
-                <h3>Second find</h3>
-                <h2>Found 15th December 2012</h2>
-                <p>Short comment.</p>
-            </aside>
-            <aside class="item">
-                <a href="#">
-                    <img src="../images/geocache/user-image.png" alt="Dashocat" /></a><!-- Image must be 400px by 300px -->
-                <h3>Dashocat 2</h3>
-                <p>SIT Year 2</p>
-            </aside>
-            <asp:Button ID="Button1" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ReportFindPanel').dialog('open'); return false;" Text="Report" />
-        </div>
+        <asp:SqlDataSource ID="SqlDataSource_Find" runat="server" ConnectionString="<%$ ConnectionStrings:asecpjConnectionString %>" ProviderName="<%$ ConnectionStrings:asecpjConnectionString.ProviderName %>"></asp:SqlDataSource>
 
-        <div class="commentBox">
-            <aside class="comment">
-                <h3>OMG WASTED 3 HOURS OF MY LIFE</h3>
-                <h2>Found 14th December 2012</h2>
-                <p>I’m the kind of person who likes to be by himself. To put a finer point on it, I’m the type of person who doesn’t find it painful to be alone. I find spending an hour or two every day running alone, not speaking to anyone, as well as four or five hours alone at my desk, to be neither difficult nor boring. I’ve had this tendency ever since I was young, when, given a choice, I much preferred reading books on my own or concentrating on listening to music over being with someone else. I could always think of things to do by myself.</p>
-            </aside>
-            <aside class="item">
-                <a href="#">
-                    <img src="../images/geocache/user-image.png" alt="Dashocat" /></a><!-- Image must be 400px by 300px -->
-                <h3>Dashocat</h3>
-                <p>SIT Year 2</p>
-            </aside>
-            <asp:Button ID="Button2" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ReportFindPanel').dialog('open'); return false;" Text="Report" />
-        </div>
+        <asp:ListView ID="ListView_Find" runat="server" DataSourceID="SqlDataSource_Find">
+            <EmptyDataTemplate>
+                <span>Geocache have not been found yet.</span>
+            </EmptyDataTemplate>
+            <ItemTemplate>
+                <div class="commentBox">
+                    <aside class="comment">
+                        <h3><asp:Label ID="findNameLabel" runat="server" Text='<%# Eval("findName") %>' /></h3>
+                        
+                        <h2>Found on <asp:Label ID="findDateCreatedLabel" runat="server" Text='<%# getFindDateCreated(Eval("findDateCreated").ToString()) %>' /></h2>
+
+                        <section class="workbodyfind">
+                            <asp:Image ID="findImage" class="width90" runat="server" ImageUrl='<%# getFindImage(Eval("findImage").ToString()) %>' />
+                        </section>
+                        <p><asp:TextBox ID="findDescriptionTextBox" runat="server" class="formstyle" Text='<%# Encoding.UTF8.GetString((byte[])(Eval("findDescription"))) %>' TextMode="MultiLine" ReadOnly="True"></asp:TextBox></p>
+                    </aside>
+                    <aside class="item">
+                        <a href="#">
+                            <img src="../images/geocache/user-image.png" alt="Dashocat" /></a><!-- Image must be 400px by 300px -->
+                        <h3><asp:Label ID="userNameLabel1" runat="server" Text='<%# Eval("username") %>' /></h3>
+                    </aside>
+                    <asp:Button ID="Button1" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ReportFindPanel').dialog('open'); return false;" Text="Report" />
+                </div>
+            </ItemTemplate>
+            <LayoutTemplate>
+                <div id="itemPlaceholderContainer" runat="server">
+                    <span runat="server" id="itemPlaceholder" />
+                </div>
+                <div style="">
+                </div>
+            </LayoutTemplate>
+        </asp:ListView>
 
         <div id="ReportGeocachePanel" title="Report Geocache!">
             <p>
@@ -138,10 +132,8 @@
                 <asp:RadioButton ID="gSpamRadioButton" Text=" Spam" GroupName="geocacheReason" runat="server" /><br />
                 <asp:RadioButton ID="gCopyrightedRadioButton" Text=" Copyrighted Content" GroupName="geocacheReason" runat="server" /><br />
                 <asp:RadioButton ID="gLostRadioButton" Text=" Lost Geocache" GroupName="geocacheReason" runat="server" /><br />
-                <asp:RadioButton ID="gOtherRadioButton" GroupName="geocacheReason" runat="server" /> <asp:TextBox ID="TextBox1" class="formstyle" style="width:80%" runat="server"></asp:TextBox>
-
-
-                Additional Information:<br />
+                <asp:RadioButton ID="gOtherRadioButton" GroupName="geocacheReason" runat="server" />
+                <asp:TextBox ID="TextBox1" class="formstyle" Style="width: 80%" runat="server"></asp:TextBox>Additional Information:<br />
                 <asp:TextBox ID="TextBox2" runat="server" class="formstyle" title="Comment" Height="150px" TextMode="MultiLine"></asp:TextBox><br />
 
                 <asp:Button ID="Button3" runat="server" class="button formstyle" OnClientClick="javascript: $(#ReportGeocachePanel).dialog('close');" Width="100%" Text="Submit!" />
@@ -156,10 +148,8 @@
                 <asp:RadioButton ID="fHatefulRadioButton" Text=" Hateful Content" GroupName="findReason" runat="server" /><br />
                 <asp:RadioButton ID="fSpamRadioButton" Text=" Spam" GroupName="findReason" runat="server" /><br />
                 <asp:RadioButton ID="fCopyrightedRadioButton" Text=" Copyrighted Content" GroupName="findReason" runat="server" /><br />
-                <asp:RadioButton ID="fOtherRadioButton" GroupName="findReason" runat="server" /> <asp:TextBox ID="userTextBox" class="formstyle" style="width:80%" runat="server"></asp:TextBox>
-
-
-                Additional Information:<br />
+                <asp:RadioButton ID="fOtherRadioButton" GroupName="findReason" runat="server" />
+                <asp:TextBox ID="userTextBox" class="formstyle" Style="width: 80%" runat="server"></asp:TextBox>Additional Information:<br />
                 <asp:TextBox ID="infoTextBox" runat="server" class="formstyle" title="Comment" Height="150px" TextMode="MultiLine"></asp:TextBox><br />
 
                 <asp:Button ID="filterButton" runat="server" class="button formstyle" OnClientClick="javascript: $(#ReportFindPanel).dialog('close');" Width="100%" Text="Submit!" />

@@ -13,6 +13,15 @@ namespace ASECPJ.geocache {
     public partial class view1 {
         
         /// <summary>
+        /// geocacheNameLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label geocacheNameLabel;
+        
+        /// <summary>
         /// reportButton control.
         /// </summary>
         /// <remarks>
@@ -31,31 +40,67 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.Button editButton;
         
         /// <summary>
-        /// subjectTextBox control.
+        /// usernameLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox subjectTextBox;
+        protected global::System.Web.UI.WebControls.Label usernameLabel;
         
         /// <summary>
-        /// commentTextBox control.
+        /// geocacheDateCreatedLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox commentTextBox;
+        protected global::System.Web.UI.WebControls.Label geocacheDateCreatedLabel;
         
         /// <summary>
-        /// FileUpload1 control.
+        /// geocacheImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload1;
+        protected global::System.Web.UI.WebControls.Image geocacheImage;
+        
+        /// <summary>
+        /// geocacheDescriptionTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox geocacheDescriptionTextBox;
+        
+        /// <summary>
+        /// findNameTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox findNameTextBox;
+        
+        /// <summary>
+        /// findDescriptionTextBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox findDescriptionTextBox;
+        
+        /// <summary>
+        /// findImageFileUpload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload findImageFileUpload;
         
         /// <summary>
         /// verificationCodeTextBox control.
@@ -76,22 +121,22 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.Button submitButton;
         
         /// <summary>
-        /// Button1 control.
+        /// SqlDataSource_Find control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource_Find;
         
         /// <summary>
-        /// Button2 control.
+        /// ListView_Find control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.ListView ListView_Find;
         
         /// <summary>
         /// geocacheReasonRadioButtonList control.

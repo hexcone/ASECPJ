@@ -12,8 +12,6 @@
             });
 
         });
-
-
     </script>
 
     <!--[if lt IE 9]>
@@ -35,14 +33,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
         <h1>Geocaches Nearby</h1>
-        <div>
-            <p>
-                Latitude:
-                <input id="latitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
-                Longitude:
-                <input id="longitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
-            </p>
-        </div>
+        
         <div id="tabs">
             <ul>
                 <li><a href="#tabs-1">Locate me!</a></li>
@@ -79,8 +70,8 @@
                         var map = new google.maps.Map(document.getElementById("mapholder"), myOptions);
                         var marker = new google.maps.Marker({ position: latlon, map: map, title: "You are here!" });
 
-                        latitude.value = lat;
-                        longitude.value = lon;
+                        document.getElementById('<%= latitudeTextBox.ClientID %>').value = lat;
+                        document.getElementById('<%= longitudeTextBox.ClientID %>').value = lon;
                     }
 
                     function showError(error) {
@@ -105,13 +96,159 @@
             <div id="tabs-2">
                 <div id="canvas"></div>
                 <br />
-                <script type="text/javascript" src="gmap.js"></script>
+                <script type="text/javascript">
+                    // configuration
+                    var myZoom = 12;
+                    var myMarkerIsDraggable = true;
+                    var myCoordsLenght = 6;
+                    var defaultLat = 1.379530;
+                    var defaultLng = 103.849880;
+
+                    // creates the map
+                    // zooms
+                    // centers the map
+                    // sets the map's type 
+                    var map = new google.maps.Map(document.getElementById('canvas'), {
+                        zoom: myZoom,
+                        center: new google.maps.LatLng(defaultLat, defaultLng),
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    });
+
+                    // creates a draggable marker to the given coords
+                    var myMarker = new google.maps.Marker({
+                        position: new google.maps.LatLng(defaultLat, defaultLng),
+                        draggable: myMarkerIsDraggable
+                    });
+
+
+                    // adds a listener to the marker
+                    // gets the coords when drag event ends
+                    // then updates the input with the new coords
+                    google.maps.event.addListener(myMarker, 'dragend', function (evt) {
+                        document.getElementById('<%= latitudeTextBox.ClientID %>').value = evt.latLng.lat().toFixed(myCoordsLenght);
+                        document.getElementById('<%= longitudeTextBox.ClientID %>').value = evt.latLng.lng().toFixed(myCoordsLenght);
+                    });
+
+
+                    // centers the map on markers coords
+                    map.setCenter(myMarker.position);
+
+                    // adds the marker on the map
+                    myMarker.setMap(map);
+                </script>
             </div>
 
         </div>
-        <br /><br />
-
         <div>
+            <p>
+                <%--Latitude:
+                <input id="latitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />
+                Longitude:
+                <input id="longitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />--%>
+
+                Latitude:
+                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" /><br />
+                Longitude:
+                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" /><br />
+
+                <asp:Button ID="searchButton" runat="server" class="button formstyle" Width="100%" Text="Search" OnClick="searchButton_Click" />
+            </p>
+        </div>
+        <br />
+        <br />
+
+        <asp:SqlDataSource ID="SqlDataSource_Near" runat="server" ConnectionString="<%$ ConnectionStrings:asecpjConnectionString %>" ProviderName="<%$ ConnectionStrings:asecpjConnectionString.ProviderName %>"></asp:SqlDataSource>
+
+        <asp:ListView ID="ListView1" runat="server" DataSourceID="SqlDataSource_Near" DataKeyNames="geocacheId">
+
+            <EmptyDataTemplate>
+                <table id="Table1" runat="server" style="">
+                    <tr>
+                        <td>No data was returned.</td>
+                    </tr>
+                </table>
+            </EmptyDataTemplate>
+
+            <ItemTemplate>
+                <tr style="">
+                    <td>
+                        <p>
+                            <asp:HiddenField ID="geocacheIdHiddenField" runat="server" Value='<%# Eval("geocacheId") %>' />
+                            <asp:HyperLink ID="geocacheIdHyperLink" runat="server" NavigateUrl='<%# getUrl(Eval("geocacheId")) %>'>
+                                <asp:Label ID="geocacheNameLabel" runat="server" Text='<%# Eval("geocacheName") %>' />
+                            </asp:HyperLink></p></td><td>
+                        <p>
+                            <asp:Label ID="geocacheDateCreatedLabel" runat="server" Text='<%# Eval("geocacheDateCreated") %>' />
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <asp:Label ID="usernameLabel" runat="server" Text='<%# Eval("username") %>' />
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            <asp:Label ID="distanceLabel" runat="server" Text='<%# getDistance(Eval("distance")) %>' />
+                        </p>
+                    </td>
+                </tr>
+            </ItemTemplate>
+
+            <LayoutTemplate>
+                <table id="Table2" runat="server" style="border: 1px solid black; width: 100%;">
+                    <tr id="Tr1" runat="server">
+                        <td id="Td1" runat="server">
+                            <table id="itemPlaceholderContainer" runat="server" style="width: 100%;">
+                                <tr id="Tr2" runat="server" style="">
+
+                                    <th id="Th1" runat="server">
+                                        <p>geocacheName</p></th><th id="Th2" runat="server">
+                                        <p>geocacheDateCreated</p></th><th id="Th3" runat="server">
+                                        <p>username</p></th><th id="Th4" runat="server">
+                                        <p>distance</p></th></tr><tr id="itemPlaceholder" runat="server">
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr id="Tr3" runat="server">
+                        <td id="Td2" runat="server" style=""></td>
+                    </tr>
+                </table>
+            </LayoutTemplate>
+
+        </asp:ListView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <%--<div>
             <table style="border: 1px solid black; width: 100%;">
                 <tr>
                     <th>
@@ -145,7 +282,7 @@
                     </td>
                 </tr>
             </table>
-        </div>
+        </div>--%>
 
 
 

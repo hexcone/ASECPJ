@@ -13,7 +13,7 @@ namespace ASECPJ.geocache
         protected void Page_Load(object sender, EventArgs e)
         {
             //List<Geocache> geocacheList = GeocacheDb.retrieveGeocache();
-            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser";
+            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser ORDER BY geocacheDateCreated DESC";
 
         }
 
@@ -32,7 +32,7 @@ namespace ASECPJ.geocache
             SqlDataSource_All.SelectCommand = null;
             SqlDataSource_All.SelectParameters.Clear();
 
-            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser WHERE (geocacheDifficulty BETWEEN @geocacheDifficultyBottomBound AND @geocacheDifficultyTopBound)";
+            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser WHERE (geocacheDifficulty BETWEEN @geocacheDifficultyBottomBound AND @geocacheDifficultyTopBound) ";
 
             if (!keyword.Equals(""))
             {

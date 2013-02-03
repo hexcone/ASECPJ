@@ -800,3 +800,13 @@ header ul {
 .floatright {
     float: right;
 }
+
+.workbodyfind {
+    width: 100%;
+    margin-top: 2%;
+}
+
+    .workbodyfind img {
+        width: 95%;
+        border-radius: 15px;
+    }

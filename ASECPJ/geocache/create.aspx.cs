@@ -15,7 +15,8 @@ namespace ASECPJ.geocache
         string geocacheName;
         string geocacheDescription;
         int geocacheDifficulty;
-        string geocacheCoordinates;
+        string geocacheLatitude;
+        string geocacheLongitude;
         string geocacheImage;
         DateTime geocacheDateCreated;
         string geocacheVerificationId;
@@ -23,12 +24,13 @@ namespace ASECPJ.geocache
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string verificationCode = Guid.NewGuid().ToString().Substring(0, 8);
-            verificationCodeLabel.Text = verificationCode;
+            string verificationCode = Guid.NewGuid().ToString().Replace("-", "");
+            verificationCodeLabel.Text = verificationCode.Substring(0, 8);
         }
 
         protected void createButton_Click(object sender, EventArgs e)
         {
+
             if (imageFileUpload.HasFile)
             {
                 try
@@ -60,12 +62,13 @@ namespace ASECPJ.geocache
             geocacheName = nameTextBox.Text;
             geocacheDescription = descriptionTextBox.Text;
             geocacheDifficulty = Convert.ToInt32(difficultyLabel.Text);
-            geocacheCoordinates = latitudeTextBox.Text + "," + longitudeTextBox.Text;
+            geocacheLatitude = latitudeTextBox.Text;
+            geocacheLongitude = longitudeTextBox.Text;
             //geocacheImage = "/image.jpeg";
             geocacheDateCreated = DateTime.Now;
             geocacheVerificationId = verificationCodeLabel.Text; 
             geocacheStatus = "pending";
-            GeocacheDb.createGeocache(geocacheName, geocacheDescription, geocacheDifficulty, geocacheCoordinates, geocacheImage,
+            GeocacheDb.createGeocache(geocacheName, geocacheDescription, geocacheDifficulty, geocacheLatitude, geocacheLongitude, geocacheImage,
                 geocacheDateCreated, geocacheVerificationId, geocacheStatus);
              
         }
