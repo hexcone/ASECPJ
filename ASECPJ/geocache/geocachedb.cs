@@ -315,6 +315,85 @@ public class GeocacheDb
         return findReportId;
     }
 
+    public static void createGeocacheReport(string geocacheId)
+    {
+        //if (Membership.GetUser() != null)
+        //{
+        //    m = Membership.GetUser();
+        //    // (retrieve memberId here) memberId = new int(m.ProviderUserKey.ToString());
+        //}
+
+        MySqlConnection con = new MySqlConnection(connectionString);
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "INSERT INTO geocacheReport(geocacheId, iduser, geocacheReportDateTime) " +
+            "VALUES (@geocacheId, @iduser, @geocacheReportDateTime)";
+        cmd.Prepare();
+
+        cmd.Parameters.AddWithValue("@geocacheId", geocacheId.ToString());
+        cmd.Parameters.AddWithValue("@iduser", iduser);
+        cmd.Parameters.AddWithValue("@geocacheReportDateTime", DateTime.Now);
+
+        cmd.ExecuteNonQuery();
+
+    }
+
+    public static bool retrieveGeocacheReportStatus(string geocacheId)
+    {
+        //if (Membership.GetUser() != null)
+        //{
+        //    m = Membership.GetUser();
+        //    // (retrieve memberId here) memberId = new int(m.ProviderUserKey.ToString());
+        //}
+
+        
+        MySqlDataReader reader;
+        MySqlConnection con = new MySqlConnection(connectionString);
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "SELECT * FROM geocacheReport WHERE geocacheId=@geocacheId AND iduser=@iduser";
+
+        cmd.Prepare();
+        cmd.Parameters.AddWithValue("@geocacheId", geocacheId);
+        cmd.Parameters.AddWithValue("@iduser", iduser);
+
+        reader = cmd.ExecuteReader();
+        if (reader.Read())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static void createFindReport(string findId)
+    {
+        //if (Membership.GetUser() != null)
+        //{
+        //    m = Membership.GetUser();
+        //    // (retrieve memberId here) memberId = new int(m.ProviderUserKey.ToString());
+        //}
+
+        MySqlConnection con = new MySqlConnection(connectionString);
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "INSERT INTO findReport(findId, iduser, findReportDateTime) " +
+            "VALUES (@findId, @iduser, @findReportDateTime)";
+        cmd.Prepare();
+
+        cmd.Parameters.AddWithValue("@findId", findId.ToString());
+        cmd.Parameters.AddWithValue("@iduser", iduser);
+        cmd.Parameters.AddWithValue("@findReportDateTime", DateTime.Now);
+
+        cmd.ExecuteNonQuery();
+
+    }
+
     /*
     //this method updates the event title and description
     public static void updateEvent(int id, String title, String description)

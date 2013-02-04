@@ -10,49 +10,38 @@
             });
         });
 
-        $().ready(function () {
-            $("#ReportFindPanel").dialog({
-                autoOpen: false,
-                modal: true,
-                bgiframe: true,
-                width: 400,
-                height: 500,
-                buttons: {
-                    <%--'Youbetcha': function () {
-                        <%=this.Page.ClientScript.GetPostBackEventReference(new PostBackOptions(this.Button1))%>;
-                    },
-                    'Cancel': function () {
-                        $(this).dialog('close');
-                    }--%>
-                }
-            })
-            $('#ReportFindPanel').parent().appendTo($("form:first"));
-        });
-        $().ready(function () {
-            $("#ReportGeocachePanel").dialog({
-                autoOpen: false,
-                modal: true,
-                bgiframe: true,
-                width: 400,
-                height: 500,
-                buttons: {
-                    <%--'Youbetcha': function () {
-                        <%=this.Page.ClientScript.GetPostBackEventReference(new PostBackOptions(this.Button1))%>;
-                    },
-                    'Cancel': function () {
-                        $(this).dialog('close');
-                    }--%>
-                }
-            })
-            $('#ReportGeocachePanel').parent().appendTo($("form:first"));
-        });
+        //$().ready(function () {
+        //    $("#ReportFindPanel").dialog({
+        //        autoOpen: false,
+        //        modal: true,
+        //        bgiframe: true,
+        //        width: 400,
+        //        height: 500,
+        //        buttons: {
+        //        }
+        //    })
+        //    $('#ReportFindPanel').parent().appendTo($("form:first"));
+        //});
+        //$().ready(function () {
+        //    $("#ReportGeocachePanel").dialog({
+        //        autoOpen: false,
+        //        modal: true,
+        //        bgiframe: true,
+        //        width: 400,
+        //        height: 500,
+        //        buttons: {
+        //        }
+        //    })
+        //    $('#ReportGeocachePanel').parent().appendTo($("form:first"));
+        //});
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="content" runat="server">
     <header>
         <h1>
             <asp:Label ID="geocacheNameLabel" runat="server" Text="<%# getGeocacheName() %>"></asp:Label>
-            <asp:Button ID="reportButton" runat="server" class="button formstyle" Width="20%" Text="Report geocache" OnClientClick="javascript: $('#ReportGeocachePanel').dialog('open'); return false;" />
+            <asp:Button ID="reportButton" runat="server" class="button formstyle" Width="20%" Text="Report geocache" OnClick="reportButton_Click" />
+            <%--OnClientClick="javascript: $('#ReportGeocachePanel').dialog('open'); return false;"--%>
             <asp:Button ID="editButton" runat="server" class="button formstyle" Width="20%" Text="Edit geocache" OnClick="editButton_Click" />
         </h1>
         <h2>Created by <a href="#">
@@ -74,13 +63,14 @@
                 <p>
                     Subject:<br />
                     <asp:TextBox ID="findNameTextBox" runat="server" class="formstyle" placeholder="Subject"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="findNameTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="findNameTextBox" runat="server" ErrorMessage="*Required field" ValidationGroup="newFind"></asp:RequiredFieldValidator><br /><br />
+                    <asp:RequiredFieldValidator ID="findNameTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="findNameTextBox" runat="server" ErrorMessage="*Required field" ValidationGroup="newFind"></asp:RequiredFieldValidator><br />
+                    <br />
                     Comment:<br />
                     <asp:TextBox ID="findDescriptionTextBox" runat="server" class="formstyle" placeholder="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="findDescriptionTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="findDescriptionTextBox" runat="server" ErrorMessage="*Required field" ValidationGroup="newFind"></asp:RequiredFieldValidator><br />
                     <br />
                     Image:<asp:FileUpload ID="findImageFileUpload" runat="server" />
-                    <asp:RequiredFieldValidator ID="findImageFileUploadRequiredFieldValidator" CssClass="validator" ControlToValidate="findImageFileUpload" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
+                    <asp:RequiredFieldValidator ID="findImageFileUploadRequiredFieldValidator" CssClass="validator" ControlToValidate="findImageFileUpload" runat="server" ErrorMessage="*Required field" ValidationGroup="newFind"></asp:RequiredFieldValidator><br />
                     <br />
                     Verification Code: (Found with your geocache!)<br />
                     <asp:TextBox ID="verificationCodeTextBox" runat="server" class="formstyle"></asp:TextBox>
@@ -97,10 +87,10 @@
 
         <asp:ListView ID="ListView_Find" runat="server" DataSourceID="SqlDataSource_Find">
             <EmptyDataTemplate>
-                <span>Geocache have not been found yet.</span>
+                <span>Geocache have not been found yet. Be the first to find it!</span>
             </EmptyDataTemplate>
             <ItemTemplate>
-                <div class="commentBox">
+                <div class="commentBox" style='<%# getCommentBoxStyle(Eval("noOfReport").ToString()) %>'>
                     <aside class="comment">
                         <h3>
                             <asp:Label ID="findNameLabel" runat="server" Text='<%# Eval("findName") %>' /></h3>
@@ -112,7 +102,8 @@
                             <asp:Image ID="findImage" class="width90" runat="server" ImageUrl='<%# getFindImage(Eval("findImage").ToString()) %>' />
                         </section>
                         <p>
-                            <asp:TextBox ID="findDescriptionTextBox" runat="server" class="formstyle" Text='<%# Encoding.UTF8.GetString((byte[])(Eval("findDescription"))) %>' TextMode="MultiLine" ReadOnly="True"></asp:TextBox></p>
+                            <asp:TextBox ID="findDescriptionTextBox" runat="server" class="formstyle" Text='<%# Encoding.UTF8.GetString((byte[])(Eval("findDescription"))) %>' TextMode="MultiLine" ReadOnly="True"></asp:TextBox>
+                        </p>
                     </aside>
                     <aside class="item">
                         <a href="#">
@@ -120,7 +111,8 @@
                         <h3>
                             <asp:Label ID="userNameLabel" runat="server" Text='<%# Eval("username") %>' /></h3>
                     </aside>
-                    <asp:Button ID="reportFindButton" runat="server" Width="20%" class="button formstyle floatright" OnClientClick="javascript: $('#ReportFindPanel').dialog('open'); return false;" Text="Report" />
+                    <asp:Button ID="reportFindButton" runat="server" Width="20%" class="button formstyle floatright" OnClick="reportFindButton_Click" Text='<%# getReportFindButtonText(Eval("reportStatus")) %>' CommandArgument='<%# Eval("findId") %>' Enabled='<%# getReportFindButtonEnabled(Eval("reportStatus")) %>' />
+                    <%--OnClientClick="javascript: $('#ReportFindPanel').dialog('open'); return false;"--%>
                 </div>
             </ItemTemplate>
             <LayoutTemplate>
@@ -132,7 +124,7 @@
             </LayoutTemplate>
         </asp:ListView>
 
-        <div id="ReportGeocachePanel" title="Report Geocache!">
+        <%--<div id="ReportGeocachePanel" title="Report Geocache!">
             <p>
                 Reason:<br />
 
@@ -168,7 +160,7 @@
 
                 <asp:Button ID="filterButton" runat="server" class="button formstyle" OnClientClick="javascript: $(#ReportFindPanel).dialog('close');" Width="100%" Text="Submit!" OnClick="filterButton_Click" />
             </p>
-        </div>
+        </div>--%>
     </header>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">

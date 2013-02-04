@@ -168,7 +168,7 @@
                     <EmptyDataTemplate>
                         <table id="Table1" runat="server" style="">
                             <tr>
-                                <td>No data was returned.</td>
+                                <td><p>Search for geocaches near you!</p></td>
                             </tr>
                         </table>
                     </EmptyDataTemplate>
@@ -209,16 +209,16 @@
                                         <tr id="Tr2" runat="server" style="">
 
                                             <th id="Th1" runat="server">
-                                                <p>geocacheName</p>
+                                                <p>Name</p>
                                             </th>
                                             <th id="Th2" runat="server">
-                                                <p>geocacheDateCreated</p>
+                                                <p>Date Created</p>
                                             </th>
                                             <th id="Th3" runat="server">
-                                                <p>username</p>
+                                                <p>Created By</p>
                                             </th>
                                             <th id="Th4" runat="server">
-                                                <p>distance</p>
+                                                <p>Distance</p>
                                             </th>
                                         </tr>
                                         <tr id="itemPlaceholder" runat="server">

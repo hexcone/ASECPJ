@@ -44,16 +44,13 @@
             </EmptyDataTemplate>
 
             <ItemTemplate>
-                <tr style="">
+                <tr style='<%# getStyle(Eval("noOfReport")) %>'>
                     <td>
                         <p>
                             <asp:HiddenField ID="geocacheIdHiddenField" runat="server" Value='<%# Eval("geocacheId") %>' />
                             <asp:HyperLink ID="geocacheIdHyperLink" runat="server" NavigateUrl='<%# getUrl(Eval("geocacheId")) %>'>
-                                <asp:Label ID="geocacheNameLabel" runat="server" Text='<%# Eval("geocacheName") %>' />
-                            </asp:HyperLink>
-                        </p>
-                    </td>
-                    <td>
+                                <asp:Label ID="geocacheNameLabel" runat="server" Text='<%# Eval("geocacheName") %>' ForeColor='<%# getColor(Eval("noOfReport")) %>' />
+                            </asp:HyperLink></p></td><td>
                         <p>
                             <asp:Label ID="noOfFindLabel" runat="server" Text='<%# getNoOfFind(Eval("noOfFind")) %>' />
                         </p>
@@ -79,19 +76,10 @@
                                 <tr runat="server" style="">
 
                                     <th runat="server">
-                                        <p>Name</p>
-                                    </th>
-                                    <th runat="server">
-                                        <p>Found</p>
-                                    </th>
-                                    <th runat="server">
-                                        <p>Date Created</p>
-                                    </th>
-                                    <th runat="server">
-                                        <p>Created By</p>
-                                    </th>
-                                </tr>
-                                <tr id="itemPlaceholder" runat="server">
+                                        <p>Name</p></th><th runat="server">
+                                        <p>Found</p></th><th runat="server">
+                                        <p>Date Created</p></th><th runat="server">
+                                        <p>Created By</p></th></tr><tr id="itemPlaceholder" runat="server">
                                 </tr>
                             </table>
                         </td>
@@ -110,36 +98,19 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="contentright" runat="server">
     <header>
         <div class="accordion">
-            <h2>Filter by keyword</h2>
-            <div>
+            <h2>Filter by keyword</h2><div>
                 <p>
-                    <asp:TextBox ID="keywordTextBox" runat="server" class="formstyle center" placeholder="Keyword"></asp:TextBox>
-                </p>
+                    <asp:TextBox ID="keywordTextBox" runat="server" class="formstyle center" placeholder="Keyword"></asp:TextBox></p></div></div><div class="accordion">
+            <h2>Difficulty</h2><div>
+                <p>
+                    <asp:TextBox ID="difficultyLabel" runat="server" ClientIDMode="Static"></asp:TextBox></p><div id="slider-range"></div>
             </div>
         </div>
         <div class="accordion">
-            <h2>Difficulty</h2>
-            <div>
-                <p>
-                    <asp:TextBox ID="difficultyLabel" runat="server" ClientIDMode="Static"></asp:TextBox>
-                </p>
-                <div id="slider-range"></div>
-            </div>
-        </div>
-        <div class="accordion">
-            <h2>Sort by</h2>
-            <div>
+            <h2>Sort by</h2><div>
                 <p>
                     <asp:DropDownList ID="sortDropDownList" runat="server" class="formstyle center">
-                        <asp:ListItem Text="Newest First"></asp:ListItem>
-                        <asp:ListItem Text="Oldest First"></asp:ListItem>
-                        <asp:ListItem Text="Most Found First"></asp:ListItem>
-                        <asp:ListItem Text="Least Found First"></asp:ListItem>
-                    </asp:DropDownList>
-                </p>
-            </div>
-        </div>
-        <div class="accordion">
+                        <asp:ListItem Text="Newest First"></asp:ListItem><asp:ListItem Text="Oldest First"></asp:ListItem><asp:ListItem Text="Most Found First"></asp:ListItem><asp:ListItem Text="Least Found First"></asp:ListItem></asp:DropDownList></p></div></div><div class="accordion">
         </div>
         <br />
         <asp:Button ID="filterButton" runat="server" class="button formstyle" Width="100%" Text="Filter" OnClick="filterButton_Click" />

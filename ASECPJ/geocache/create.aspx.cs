@@ -42,9 +42,10 @@ namespace ASECPJ.geocache
                     geocacheImage = imageName + ".bmp";
                     System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(imageFileUpload.PostedFile.InputStream);
                     bmpPostedImage.Save(Server.MapPath(@"uploads/") + imageName + ".bmp");
-
-                    Stegano encryptStegano = new Stegano();
-                    encryptStegano.HideMessage(geocacheImage, geocacheImage, iduser);
+                    
+                    //bmpPostedImage.Save(Server.MapPath(@"uploads/") + imageName + ".bmp");
+                    //Stegano encryptStegano = new Stegano();
+                    //encryptStegano.HideMessage(geocacheImage, geocacheImage, iduser);
                 }
                 catch (Exception ex)
                 {
@@ -69,27 +70,29 @@ namespace ASECPJ.geocache
 
         protected void CustomValidator_ServerValidate(object source, ServerValidateEventArgs args)
         {
-            string imageName = Guid.NewGuid().ToString().Substring(0, 8);
-            string geocacheImageTemp = imageName + ".bmp";
-            System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(imageFileUpload.PostedFile.InputStream);
-            bmpPostedImage.Save(Server.MapPath(@"temp\") + imageName + ".bmp");
-            //bmpPostedImage.Save("C:\\Users\\Juliana\\Documents\\GitHub\\ASECPJ\\ASECPJ\\geocache\\temp\\" + imageName + ".bmp");
+            //string imageName = Guid.NewGuid().ToString().Substring(0, 8);
+            //string geocacheImageTemp = imageName + ".bmp";
+            //System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(imageFileUpload.PostedFile.InputStream);
+            //bmpPostedImage.Save(Server.MapPath(@"temp\") + imageName + ".bmp");
+            ////bmpPostedImage.Save("C:\\Users\\Juliana\\Documents\\GitHub\\ASECPJ\\ASECPJ\\geocache\\temp\\" + imageName + ".bmp");
 
-            Stegano decryptStegano = new Stegano();
-            string message = decryptStegano.RetrieveMessage(Server.MapPath(@"temp\") + imageName + ".bmp");
-            //string message = decryptStegano.RetrieveMessage("C:\\Users\\Juliana\\Documents\\GitHub\\ASECPJ\\ASECPJ\\geocache\\temp\\3a902149.bmp");
+            //Stegano decryptStegano = new Stegano();
+            //string message = decryptStegano.RetrieveMessage(Server.MapPath(@"temp\") + imageName + ".bmp");
+            ////string message = decryptStegano.RetrieveMessage("C:\\Users\\Juliana\\Documents\\GitHub\\ASECPJ\\ASECPJ\\geocache\\temp\\3a902149.bmp");
             
-            if (message.Equals(""))
-            {
-                Response.Redirect("true");
-                args.IsValid = true;
+            //if (message.Equals(""))
+            //{
+            //    Response.Redirect("true");
+            //    args.IsValid = true;
 
-            }
-            else
-            {
-                Response.Redirect("false");
-                args.IsValid = false;
-            }
+            //}
+            //else
+            //{
+            //    Response.Redirect("false");
+            //    args.IsValid = false;
+            //}
+
+            args.IsValid = true;
         }
     }
 }

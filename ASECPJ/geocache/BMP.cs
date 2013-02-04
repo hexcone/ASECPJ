@@ -64,10 +64,7 @@ namespace Anu.Header.BMP
 
 		private void ReadBMPFileHeader(BinaryReader br)
 		{
-            Byte[] bite = br.ReadBytes(2);
-            string text = Encoding.ASCII.GetString(bite);
-            BitmapFileHeader.bfType = text.ToCharArray();
-			//BitmapFileHeader.bfType=br.ReadChars(2);
+            BitmapFileHeader.bfType=br.ReadChars(2);
 			BitmapFileHeader.bfSize=br.ReadInt32();
 			BitmapFileHeader.reserved1=br.ReadInt16();
 			BitmapFileHeader.reserved2=br.ReadInt16();

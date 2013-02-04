@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -13,7 +14,7 @@ namespace ASECPJ.geocache
         protected void Page_Load(object sender, EventArgs e)
         {
             //List<Geocache> geocacheList = GeocacheDb.retrieveGeocache();
-            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username, COUNT(find.findId) AS noOfFind FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser LEFT JOIN find ON geocache.geocacheId = find.geocacheId GROUP BY geocache.geocacheId ORDER BY geocacheDateCreated DESC;";
+            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username, COUNT(find.findId) AS noOfFind, (SELECT COUNT(*) FROM geocacheReport WHERE geocache.geocacheId = geocacheReport.geocacheId) AS noOfReport FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser LEFT JOIN find ON geocache.geocacheId = find.geocacheId GROUP BY geocache.geocacheId ORDER BY geocache.geocacheDateCreated DESC;";
 
         }
 
@@ -32,7 +33,7 @@ namespace ASECPJ.geocache
             SqlDataSource_All.SelectCommand = null;
             SqlDataSource_All.SelectParameters.Clear();
 
-            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username, COUNT(find.findId) AS noOfFind FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser LEFT JOIN find ON geocache.geocacheId = find.geocacheId WHERE (geocacheDifficulty BETWEEN @geocacheDifficultyBottomBound AND @geocacheDifficultyTopBound) ";
+            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username, COUNT(find.findId) AS noOfFind , (SELECT COUNT(*) FROM geocacheReport WHERE geocache.geocacheId = geocacheReport.geocacheId) AS noOfReport FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser LEFT JOIN find ON geocache.geocacheId = find.geocacheId WHERE (geocacheDifficulty BETWEEN @geocacheDifficultyBottomBound AND @geocacheDifficultyTopBound) ";
 
             if (!keyword.Equals(""))
             {
@@ -87,5 +88,28 @@ namespace ASECPJ.geocache
 
         }
 
+        protected String getStyle(object noOfReport)
+        {
+            if (int.Parse(noOfReport.ToString()) > 5)
+            {
+                return "color: lightgrey; ";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        protected Color getColor(object noOfReport)
+        {
+            if (int.Parse(noOfReport.ToString()) > 5)
+            {
+                return Color.LightGray;
+            }
+            else
+            {
+                return Color.Black;
+            }
+        }
     }
 }

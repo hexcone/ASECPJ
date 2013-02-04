@@ -17,6 +17,7 @@ namespace ASECPJ.geocache
         string findImage;
         DateTime findDateCreated;
         string findStatus;
+        int iduser = 2;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,15 +35,29 @@ namespace ASECPJ.geocache
             geocacheImage.DataBind();
             geocacheDescriptionTextBox.DataBind();
 
+            bool geocacheReportStatus = GeocacheDb.retrieveGeocacheReportStatus(geocacheId);
+            if (geocacheReportStatus == true)
+            {
+                reportButton.Enabled = false;
+                reportButton.Text = "Reported";
+            }
+            else
+            {
 
-            SqlDataSource_Find.SelectCommand = "SELECT find.findId, find.findName, find.findDescription, find.findImage, find.findDateCreated, `user`.username, find.findStatus FROM find INNER JOIN `user` ON find.idUser = `user`.iduser WHERE find.geocacheId = @geocacheId";
+            }
+
+            SqlDataSource_Find.SelectCommand = "SELECT find.findId, find.findName, find.findDescription, find.findImage, find.findDateCreated, `user`.username, find.findStatus, COUNT(findReport.findId) AS noOfReport, (SELECT COUNT(*) FROM findReport WHERE findReport.findId = find.findId AND findReport.iduser = @iduser) AS reportStatus FROM find INNER JOIN `user` ON find.idUser = `user`.iduser LEFT JOIN findReport ON find.findId = findReport.findId WHERE find.geocacheId = @geocacheId GROUP BY find.findId;";
             SqlDataSource_Find.SelectParameters.Add("@geocacheId", geocacheId);
+            SqlDataSource_Find.SelectParameters.Add("@iduser", iduser.ToString());
+
 
         }
 
         protected void reportButton_Click(object sender, EventArgs e)
         {
-
+            GeocacheDb.createGeocacheReport(geocacheId);
+            reportButton.Enabled = false;
+            reportButton.Text = "Reported";
         }
 
         protected void editButton_Click(object sender, EventArgs e)
@@ -64,24 +79,11 @@ namespace ASECPJ.geocache
                 {
                     try
                     {
-                        if (findImageFileUpload.PostedFile.ContentType == "image/jpeg")
-                        {
-                            if (findImageFileUpload.PostedFile.ContentLength < 10485760)
-                            {
-                                string imageName = Guid.NewGuid().ToString().Substring(0, 8);
-                                findImage = imageName + ".bmp";
-                                System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(findImageFileUpload.PostedFile.InputStream);
-                                bmpPostedImage.Save(Server.MapPath(@"uploads/") + imageName + ".bmp");
-                            }
-                            else
-                            {
-                                //StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
-                            }
-                        }
-                        else
-                        {
-                            //StatusLabel.Text = "Upload status: Only JPEG files are accepted!";
-                        }
+                        string imageName = Guid.NewGuid().ToString().Substring(0, 8);
+                        findImage = imageName + ".bmp";
+                        System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(findImageFileUpload.PostedFile.InputStream);
+                        bmpPostedImage.Save(Server.MapPath(@"uploads/") + imageName + ".bmp");
+
                     }
                     catch (Exception ex)
                     {
@@ -134,15 +136,50 @@ namespace ASECPJ.geocache
             return DateTime.Parse(findDateCreated).ToLongDateString();
         }
 
-        protected void reportGeocacheButton_Click(object sender, EventArgs e)
+        protected void reportFindButton_Click(object sender, EventArgs e)
         {
-            GeocacheDb.createGeocacheReport(geocacheReasonRadioButtonList.SelectedValue, reportGeocacheTextBox.Text, geocacheId);
+
+            Button b = (Button)sender;
+            GeocacheDb.createFindReport(b.CommandArgument);
+
         }
 
-        protected void filterButton_Click(object sender, EventArgs e)
+        protected bool getReportFindButtonEnabled(object reportStatus)
         {
-            GeocacheDb.createFindReport(findReasonRadioButtonList.SelectedValue, reportFindTextBox.Text, findIdHiddenField.Value);
+            if (int.Parse(reportStatus.ToString()) > 0)
+                return false;
+            else
+                return true;
+
         }
+
+        protected string getReportFindButtonText(object reportStatus)
+        {
+            if (int.Parse(reportStatus.ToString()) > 0)
+                return "Reported";
+            else
+                return "Report";
+
+        }
+
+        protected string getCommentBoxStyle(object noOfReport)
+        {
+            if (int.Parse(noOfReport.ToString()) > 5)
+                return "opacity:0.4; filter:alpha(opacity=40);";
+            else
+                return "";
+
+        }
+
+        //protected void reportGeocacheButton_Click(object sender, EventArgs e)
+        //{
+        //    GeocacheDb.createGeocacheReport(geocacheReasonRadioButtonList.SelectedValue, reportGeocacheTextBox.Text, geocacheId);
+        //}
+
+        //protected void filterButton_Click(object sender, EventArgs e)
+        //{
+        //    GeocacheDb.createFindReport(findReasonRadioButtonList.SelectedValue, reportFindTextBox.Text, findIdHiddenField.Value);
+        //}
 
 
     }
