@@ -810,3 +810,8 @@ header ul {
         width: 95%;
         border-radius: 15px;
     }
+
+.validator {
+    color: red;
+    font-style:italic;
+}

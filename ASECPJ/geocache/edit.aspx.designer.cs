@@ -31,6 +31,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox nameTextBox;
         
         /// <summary>
+        /// nameTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator nameTextBoxRequiredFieldValidator;
+        
+        /// <summary>
         /// descriptionTextBox control.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,15 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox descriptionTextBox;
+        
+        /// <summary>
+        /// descriptionTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator descriptionTextBoxRequiredFieldValidator;
         
         /// <summary>
         /// imageFileUpload control.
@@ -58,6 +76,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.DropDownList difficultyDropDownList;
         
         /// <summary>
+        /// difficultyRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator difficultyRequiredFieldValidator;
+        
+        /// <summary>
         /// latitudeTextBox control.
         /// </summary>
         /// <remarks>
@@ -65,6 +92,15 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox latitudeTextBox;
+        
+        /// <summary>
+        /// latitudeTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator latitudeTextBoxRequiredFieldValidator;
         
         /// <summary>
         /// longitudeTextBox control.
@@ -76,30 +112,30 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox longitudeTextBox;
         
         /// <summary>
-        /// verificationCodeButton control.
+        /// longitudeTextBoxRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button verificationCodeButton;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator longitudeTextBoxRequiredFieldValidator;
         
         /// <summary>
-        /// Label1 control.
+        /// verificationCodeLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label verificationCodeLabel;
         
         /// <summary>
-        /// createButton control.
+        /// updateButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createButton;
+        protected global::System.Web.UI.WebControls.Button updateButton;
     }
 }

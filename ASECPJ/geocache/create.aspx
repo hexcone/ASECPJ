@@ -52,17 +52,21 @@
                 <p>
                     Name:
                         <asp:TextBox ID="nameTextBox" runat="server" class="formstyle" placeholder="Name"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="nameTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="nameTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                     Description:
-                        <asp:TextBox ID="descriptionTextBox" runat="server" class="formstyle" placeholder="Description" Height="200px" TextMode="MultiLine"></asp:TextBox><br />
+                        <asp:TextBox ID="descriptionTextBox" runat="server" class="formstyle" placeholder="Description" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="descriptionTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="descriptionTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                     Image:<br />
                     <asp:FileUpload ID="imageFileUpload" runat="server" />
-                    <br />
+                    <asp:RequiredFieldValidator ID="imageFileUploadRequiredFieldValidator" CssClass="validator" ControlToValidate="imageFileUpload" runat="server" ErrorMessage="*Required field" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <asp:CustomValidator ID="imageFileUploadCustomValidator" CssClass="validator" ControlToValidate="imageFileUpload" runat="server" ErrorMessage="*System detected that this image is not authentic, please use another image" OnServerValidate="CustomValidator_ServerValidate" Display="Dynamic"></asp:CustomValidator><br />
                     <br />
                     Difficulty:
                     <asp:TextBox ID="difficultyLabel" runat="server" ClientIDMode="Static"></asp:TextBox>
                     <%--<input type="text" id="amount" />--%>
                 </p>
                 <div id="slider-range-max"></div>
+                <asp:RequiredFieldValidator ID="difficultyRequiredFieldValidator" CssClass="validator" ControlToValidate="difficultyLabel" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
 
             </div>
         </div>
@@ -71,12 +75,15 @@
             <div>
                 <p>
                     Latitude:
-                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" /><br />
+                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" />
+                    <asp:RequiredFieldValidator ID="latitudeTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="latitudeTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                     Longitude:
-                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" /><br />
+                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" />
+                    <asp:RequiredFieldValidator ID="longitudeTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="longitudeTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                 </p>
                 <div id="canvas"></div>
                 <br />
+                
                 <script type="text/javascript">
                     // configuration
                     var myZoom = 12;

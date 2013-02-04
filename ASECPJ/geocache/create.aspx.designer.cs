@@ -22,6 +22,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox nameTextBox;
         
         /// <summary>
+        /// nameTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator nameTextBoxRequiredFieldValidator;
+        
+        /// <summary>
         /// descriptionTextBox control.
         /// </summary>
         /// <remarks>
@@ -29,6 +38,15 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox descriptionTextBox;
+        
+        /// <summary>
+        /// descriptionTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator descriptionTextBoxRequiredFieldValidator;
         
         /// <summary>
         /// imageFileUpload control.
@@ -40,6 +58,24 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.FileUpload imageFileUpload;
         
         /// <summary>
+        /// imageFileUploadRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator imageFileUploadRequiredFieldValidator;
+        
+        /// <summary>
+        /// imageFileUploadCustomValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CustomValidator imageFileUploadCustomValidator;
+        
+        /// <summary>
         /// difficultyLabel control.
         /// </summary>
         /// <remarks>
@@ -47,6 +83,15 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox difficultyLabel;
+        
+        /// <summary>
+        /// difficultyRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator difficultyRequiredFieldValidator;
         
         /// <summary>
         /// latitudeTextBox control.
@@ -58,6 +103,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox latitudeTextBox;
         
         /// <summary>
+        /// latitudeTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator latitudeTextBoxRequiredFieldValidator;
+        
+        /// <summary>
         /// longitudeTextBox control.
         /// </summary>
         /// <remarks>
@@ -65,6 +119,15 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox longitudeTextBox;
+        
+        /// <summary>
+        /// longitudeTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator longitudeTextBoxRequiredFieldValidator;
         
         /// <summary>
         /// verificationCodeLabel control.

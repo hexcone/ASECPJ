@@ -13,7 +13,7 @@ namespace ASECPJ.geocache
         protected void Page_Load(object sender, EventArgs e)
         {
             //List<Geocache> geocacheList = GeocacheDb.retrieveGeocache();
-            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser ORDER BY geocacheDateCreated DESC";
+            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username, COUNT(find.findId) AS noOfFind FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser LEFT JOIN find ON geocache.geocacheId = find.geocacheId GROUP BY geocache.geocacheId ORDER BY geocacheDateCreated DESC;";
 
         }
 
@@ -32,25 +32,35 @@ namespace ASECPJ.geocache
             SqlDataSource_All.SelectCommand = null;
             SqlDataSource_All.SelectParameters.Clear();
 
-            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser WHERE (geocacheDifficulty BETWEEN @geocacheDifficultyBottomBound AND @geocacheDifficultyTopBound) ";
+            SqlDataSource_All.SelectCommand = "SELECT geocache.geocacheId, geocache.geocacheName, DATE_FORMAT(geocache.geocacheDateCreated, '%e %M %Y') AS geocacheDateCreated, `user`.username, COUNT(find.findId) AS noOfFind FROM geocache INNER JOIN `user` ON geocache.iduser = `user`.iduser LEFT JOIN find ON geocache.geocacheId = find.geocacheId WHERE (geocacheDifficulty BETWEEN @geocacheDifficultyBottomBound AND @geocacheDifficultyTopBound) ";
 
             if (!keyword.Equals(""))
             {
                 SqlDataSource_All.SelectCommand += "AND (`user`.username LIKE @username OR geocacheName LIKE @geocacheName OR geocacheDescription LIKE @geocacheDescription) ";
             }
 
+            SqlDataSource_All.SelectCommand += "GROUP BY geocache.geocacheId ";
 
             if (!sortBy.Equals(null))
             {
                 if (sortBy.Equals("Newest First"))
                 {
-                    SqlDataSource_All.SelectCommand += "ORDER BY geocacheDateCreated DESC";
+                    SqlDataSource_All.SelectCommand += "ORDER BY geocacheDateCreated DESC ";
                 }
                 if (sortBy.Equals("Oldest First"))
                 {
-                    SqlDataSource_All.SelectCommand += "ORDER BY geocacheDateCreated ASC";
+                    SqlDataSource_All.SelectCommand += "ORDER BY geocacheDateCreated ASC ";
+                }
+                if (sortBy.Equals("Most Found First"))
+                {
+                    SqlDataSource_All.SelectCommand += "ORDER BY noOfFind DESC ";
+                }
+                if (sortBy.Equals("Least Found First"))
+                {
+                    SqlDataSource_All.SelectCommand += "ORDER BY noOfFind ASC ";
                 }
             }
+            
 
             SqlDataSource_All.SelectParameters.Add("@geocacheDifficultyBottomBound", geocacheDifficulty[0]);
             SqlDataSource_All.SelectParameters.Add("@geocacheDifficultyTopBound", geocacheDifficulty[1]);
@@ -68,6 +78,12 @@ namespace ASECPJ.geocache
         protected String getUrl(object geocacheId)
         {
             return "view.aspx?id=" + geocacheId;
+
+        }
+
+        protected String getNoOfFind(object noOfFind)
+        {
+            return noOfFind + " times";
 
         }
 

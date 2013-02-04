@@ -40,9 +40,11 @@
             <div>
                 <p>
                     Name:
-                        <asp:TextBox ID="nameTextBox" runat="server" class="formstyle" title="Subject" Text="<%# getGeocacheName() %>"></asp:TextBox>
+                        <asp:TextBox ID="nameTextBox" runat="server" class="formstyle" title="Subject"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="nameTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="nameTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                     Description:
-                        <asp:TextBox ID="descriptionTextBox" runat="server" class="formstyle" title="Comment" Height="200px" TextMode="MultiLine" Text="<%# getGeocacheDescription() %>"></asp:TextBox>
+                        <asp:TextBox ID="descriptionTextBox" runat="server" class="formstyle" title="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="descriptionTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="descriptionTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                     Image:<br />
                     <asp:FileUpload ID="imageFileUpload" runat="server" />
                     <br />
@@ -55,6 +57,7 @@
                         <asp:ListItem Text="4" Value="4"></asp:ListItem>
                         <asp:ListItem Text="5" Value="5"></asp:ListItem>
                     </asp:DropDownList>
+                    <asp:RequiredFieldValidator ID="difficultyRequiredFieldValidator" CssClass="validator" ControlToValidate="difficultyDropDownList" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                 </p>
             </div>
         </div>
@@ -63,9 +66,11 @@
             <div>
                 <p>
                     Latitude:
-                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" Text="<%# getGeocacheLatitude() %>" /><br />
+                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" />
+                    <asp:RequiredFieldValidator ID="latitudeTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="latitudeTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                     Longitude:
-                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" Text="<%# getGeocacheLongitude() %>"/><br />
+                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" />
+                    <asp:RequiredFieldValidator ID="longitudeTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="longitudeTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                 </p>
                 <div id="canvas"></div>
                 <br />
@@ -74,8 +79,8 @@
                     var myZoom = 12;
                     var myMarkerIsDraggable = true;
                     var myCoordsLenght = 6;
-                    var defaultLat = "<%# getGeocacheLatitude() %>";
-                    var defaultLng = "<%# getGeocacheLongitude() %>";
+                    var defaultLat = 1.379530;
+                    var defaultLng = 103.849880;
 
                     // creates the map
                     // zooms
@@ -102,7 +107,6 @@
                         document.getElementById('<%= longitudeTextBox.ClientID %>').value = evt.latLng.lng().toFixed(myCoordsLenght);
                     });
 
-
                     // centers the map on markers coords
                     map.setCenter(myMarker.position);
 
@@ -116,14 +120,15 @@
             <h2>Verification Code</h2>
             <div>
                 <p>
-                    <asp:Button ID="verificationCodeButton" runat="server" class="button formstyle" Width="30%" Text="Generate Verification Code!" /><br />
-                    <asp:Label ID="Label1" runat="server" Text="TY6fh45"></asp:Label><br />
-                    *Important* Hide this together with your Geocache!
+                    <asp:Label ID="verificationCodeLabel" runat="server" Font-Bold="True" Font-Size="Large"></asp:Label><br /><br />
+                    *Important* <br />
+                    This is your unique verification code for your geocache<br />
+                    Please hide this together with your geocache
                 </p>
             </div>
         </div>
         <br />
-        <asp:Button ID="createButton" runat="server" class="button formstyle" Width="100%" Text="Update Geocache!" />
+        <asp:Button ID="updateButton" runat="server" class="button formstyle" Width="100%" Text="Update Geocache!" OnClick="updateButton_Click" />
     </header>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">

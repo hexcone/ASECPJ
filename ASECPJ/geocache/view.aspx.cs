@@ -68,9 +68,10 @@ namespace ASECPJ.geocache
                         {
                             if (findImageFileUpload.PostedFile.ContentLength < 10485760)
                             {
-                                findImage = Guid.NewGuid().ToString().Substring(0, 8) + System.IO.Path.GetExtension(findImageFileUpload.PostedFile.FileName);
-                                //string filename = Path.GetFileName(imageFileUpload.FileName);
-                                findImageFileUpload.PostedFile.SaveAs(Server.MapPath("uploads/") + findImage);
+                                string imageName = Guid.NewGuid().ToString().Substring(0, 8);
+                                findImage = imageName + ".bmp";
+                                System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(findImageFileUpload.PostedFile.InputStream);
+                                bmpPostedImage.Save(Server.MapPath(@"uploads/") + imageName + ".bmp");
                             }
                             else
                             {

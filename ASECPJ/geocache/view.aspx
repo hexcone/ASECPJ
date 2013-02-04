@@ -73,15 +73,19 @@
             <div>
                 <p>
                     Subject:<br />
-                    <asp:TextBox ID="findNameTextBox" runat="server" class="formstyle" placeholder="Subject"></asp:TextBox><br />
+                    <asp:TextBox ID="findNameTextBox" runat="server" class="formstyle" placeholder="Subject"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="findNameTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="findNameTextBox" runat="server" ErrorMessage="*Required field" ValidationGroup="newFind"></asp:RequiredFieldValidator><br /><br />
                     Comment:<br />
-                    <asp:TextBox ID="findDescriptionTextBox" runat="server" class="formstyle" placeholder="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox><br />
+                    <asp:TextBox ID="findDescriptionTextBox" runat="server" class="formstyle" placeholder="Comment" Height="200px" TextMode="MultiLine"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="findDescriptionTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="findDescriptionTextBox" runat="server" ErrorMessage="*Required field" ValidationGroup="newFind"></asp:RequiredFieldValidator><br />
                     <br />
-                    Image:<asp:FileUpload ID="findImageFileUpload" runat="server" /><br />
+                    Image:<asp:FileUpload ID="findImageFileUpload" runat="server" />
+                    <asp:RequiredFieldValidator ID="findImageFileUploadRequiredFieldValidator" CssClass="validator" ControlToValidate="findImageFileUpload" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                     <br />
                     Verification Code: (Found with your geocache!)<br />
-                    <asp:TextBox ID="verificationCodeTextBox" runat="server" class="formstyle"></asp:TextBox><br />
-                    <asp:Button ID="submitButton" runat="server" class="button formstyle" Width="30%" Text="I've found a geocache!" OnClick="submitButton_Click" />
+                    <asp:TextBox ID="verificationCodeTextBox" runat="server" class="formstyle"></asp:TextBox>
+                    <asp:RequiredFieldValidator ID="verificationCodeTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="verificationCodeTextBox" runat="server" ErrorMessage="*Required field" ValidationGroup="newFind"></asp:RequiredFieldValidator><br />
+                    <asp:Button ID="submitButton" runat="server" class="button formstyle" Width="30%" Text="I've found a geocache!" OnClick="submitButton_Click" ValidationGroup="newFind" />
                 </p>
             </div>
         </div>

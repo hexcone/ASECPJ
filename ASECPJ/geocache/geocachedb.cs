@@ -35,7 +35,7 @@ public class GeocacheDb
         cmd.Connection = con;
         cmd.CommandText = "INSERT INTO geocache(geocacheId, geocacheName, geocacheDescription, geocacheDifficulty, geocacheLatitude, " +
             "geocacheLongitude, geocacheImage, geocacheDateCreated, geocacheVerificationId, geocacheStatus, iduser) VALUES (@geocacheId, " +
-            "@geocacheName, @geocacheDescription, @geocacheDifficulty, @geocacheLatitude, @geocacheLongitude" +
+            "@geocacheName, @geocacheDescription, @geocacheDifficulty, @geocacheLatitude, @geocacheLongitude, " +
             "@geocacheImage, @geocacheDateCreated, @geocacheVerificationId, " +
             "@geocacheStatus, @iduser)";
         cmd.Prepare();
@@ -109,7 +109,7 @@ public class GeocacheDb
         con.Open();
         MySqlCommand cmd = new MySqlCommand();
         cmd.Connection = con;
-        cmd.CommandText = "SELECT geocache.geocacheName, geocache.geocacheDescription, geocache.geocacheDifficulty, geocache.geocacheLatitude, geocache.geocacheLongitude, geocache.geocacheImage, geocache.geocacheDateCreated, geocache.iduser FROM geocache WHERE geocacheId=@geocacheId";
+        cmd.CommandText = "SELECT geocache.geocacheName, geocache.geocacheDescription, geocache.geocacheDifficulty, geocache.geocacheLatitude, geocache.geocacheLongitude, geocache.geocacheImage, geocache.geocacheDateCreated, geocache.geocacheVerificationID, geocache.iduser FROM geocache WHERE geocacheId=@geocacheId";
 
         cmd.Prepare();
         cmd.Parameters.AddWithValue("@geocacheId", geocacheId);
@@ -124,10 +124,41 @@ public class GeocacheDb
             g.geocacheLongitude = reader.GetString(4);
             g.geocacheImage = reader.GetString(5);
             g.geocacheDateCreated = reader.GetDateTime(6);
-            g.iduser = reader.GetInt32(7);
+            g.geocacheVerificationId = reader.GetString(7);
+            g.iduser = reader.GetInt32(8);
         }
 
         return g;
+    }
+
+    public static void updateGeocache(string geocacheId, string geocacheName, string geocacheDescription, int geocacheDifficulty, string geocacheLatitude,
+        string geocacheLongitude, string geocacheImage)
+    {
+        //if (Membership.GetUser() != null)
+        //{
+        //    m = Membership.GetUser();
+        //    // (retrieve memberId here) memberId = new int(m.ProviderUserKey.ToString());
+        //}
+
+        MySqlConnection con = new MySqlConnection(connectionString);
+        con.Open();
+        MySqlCommand cmd = new MySqlCommand();
+        cmd.Connection = con;
+        cmd.CommandText = "UPDATE geocache SET geocacheName=@geocacheName, geocacheDescription=@geocacheDescription, geocacheDifficulty=@geocacheDifficulty, " +
+            "geocacheLatitude=@geocacheLatitude, geocacheLongitude=@geocacheLongitude, geocacheImage=@geocacheImage " +
+            "WHERE geocacheId=@geocacheId";
+        cmd.Prepare();
+
+        cmd.Parameters.AddWithValue("@geocacheName", geocacheName);
+        cmd.Parameters.AddWithValue("@geocacheDescription", geocacheDescription);
+        cmd.Parameters.AddWithValue("@geocacheDifficulty", geocacheDifficulty);
+        cmd.Parameters.AddWithValue("@geocacheLatitude", geocacheLatitude);
+        cmd.Parameters.AddWithValue("@geocacheLongitude", geocacheLongitude);
+        cmd.Parameters.AddWithValue("@geocacheImage", geocacheImage);
+        cmd.Parameters.AddWithValue("@geocacheId", geocacheId);
+
+        cmd.ExecuteNonQuery();
+        
     }
 
     public static string retrieveUsername(int iduser)

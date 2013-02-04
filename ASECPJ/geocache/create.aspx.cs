@@ -7,6 +7,8 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
+using System.Drawing;
+using Anu.Steganography.Bitmap.Header;
 
 namespace ASECPJ.geocache
 {
@@ -21,6 +23,7 @@ namespace ASECPJ.geocache
         DateTime geocacheDateCreated;
         string geocacheVerificationId;
         string geocacheStatus;
+        string iduser = "2";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,27 +38,17 @@ namespace ASECPJ.geocache
             {
                 try
                 {
-                    if (imageFileUpload.PostedFile.ContentType == "image/jpeg")
-                    {
-                        if (imageFileUpload.PostedFile.ContentLength < 10485760)
-                        {
-                            geocacheImage = Guid.NewGuid().ToString().Substring(0, 8) + System.IO.Path.GetExtension(imageFileUpload.PostedFile.FileName);
-                            //string filename = Path.GetFileName(imageFileUpload.FileName);
-                            imageFileUpload.PostedFile.SaveAs(Server.MapPath("uploads/") + geocacheImage);
-                        }
-                        else
-                        {
-                            //StatusLabel.Text = "Upload status: The file has to be less than 100 kb!";
-                        }
-                    }
-                    else
-                    {
-                        //StatusLabel.Text = "Upload status: Only JPEG files are accepted!";
-                    }
+                    string imageName = Guid.NewGuid().ToString().Substring(0, 8);
+                    geocacheImage = imageName + ".bmp";
+                    System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(imageFileUpload.PostedFile.InputStream);
+                    bmpPostedImage.Save(Server.MapPath(@"uploads/") + imageName + ".bmp");
+
+                    Stegano encryptStegano = new Stegano();
+                    encryptStegano.HideMessage(geocacheImage, geocacheImage, iduser);
                 }
                 catch (Exception ex)
                 {
-                   // StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                    // StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
                 }
             }
 
@@ -66,12 +59,37 @@ namespace ASECPJ.geocache
             geocacheLongitude = longitudeTextBox.Text;
             //geocacheImage = "/image.jpeg";
             geocacheDateCreated = DateTime.Now;
-            geocacheVerificationId = verificationCodeLabel.Text; 
+            geocacheVerificationId = verificationCodeLabel.Text;
             geocacheStatus = "pending";
             GeocacheDb.createGeocache(geocacheName, geocacheDescription, geocacheDifficulty, geocacheLatitude, geocacheLongitude, geocacheImage,
                 geocacheDateCreated, geocacheVerificationId, geocacheStatus);
-             
+
+            Response.Redirect("all.aspx");
         }
 
+        protected void CustomValidator_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            string imageName = Guid.NewGuid().ToString().Substring(0, 8);
+            string geocacheImageTemp = imageName + ".bmp";
+            System.Drawing.Bitmap bmpPostedImage = new System.Drawing.Bitmap(imageFileUpload.PostedFile.InputStream);
+            bmpPostedImage.Save(Server.MapPath(@"temp\") + imageName + ".bmp");
+            //bmpPostedImage.Save("C:\\Users\\Juliana\\Documents\\GitHub\\ASECPJ\\ASECPJ\\geocache\\temp\\" + imageName + ".bmp");
+
+            Stegano decryptStegano = new Stegano();
+            string message = decryptStegano.RetrieveMessage(Server.MapPath(@"temp\") + imageName + ".bmp");
+            //string message = decryptStegano.RetrieveMessage("C:\\Users\\Juliana\\Documents\\GitHub\\ASECPJ\\ASECPJ\\geocache\\temp\\3a902149.bmp");
+            
+            if (message.Equals(""))
+            {
+                Response.Redirect("true");
+                args.IsValid = true;
+
+            }
+            else
+            {
+                Response.Redirect("false");
+                args.IsValid = false;
+            }
+        }
     }
 }

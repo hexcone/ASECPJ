@@ -55,6 +55,11 @@
                     </td>
                     <td>
                         <p>
+                            <asp:Label ID="noOfFindLabel" runat="server" Text='<%# getNoOfFind(Eval("noOfFind")) %>' />
+                        </p>
+                    </td>
+                    <td>
+                        <p>
                             <asp:Label ID="geocacheDateCreatedLabel" runat="server" Text='<%# Eval("geocacheDateCreated") %>' />
                         </p>
                     </td>
@@ -74,13 +79,16 @@
                                 <tr runat="server" style="">
 
                                     <th runat="server">
-                                        <p>geocacheName</p>
+                                        <p>Name</p>
                                     </th>
                                     <th runat="server">
-                                        <p>geocacheDateCreated</p>
+                                        <p>Found</p>
                                     </th>
                                     <th runat="server">
-                                        <p>username</p>
+                                        <p>Date Created</p>
+                                    </th>
+                                    <th runat="server">
+                                        <p>Created By</p>
                                     </th>
                                 </tr>
                                 <tr id="itemPlaceholder" runat="server">
@@ -97,37 +105,6 @@
         </asp:ListView>
         <asp:SqlDataSource ID="SqlDataSource_All" runat="server" ConnectionString="<%$ ConnectionStrings:asecpjConnectionString %>"
             ProviderName="<%$ ConnectionStrings:asecpjConnectionString.ProviderName %>"></asp:SqlDataSource>
-
-
-
-
-        <%--<table style="border: 1px solid black; width: 100%;">
-            <tr>
-                <th>
-                    <p>Description</p>
-                </th>
-                <th>
-                    <p>Placed</p>
-                </th>
-                <th>
-                    <p>Found</p>
-                </th>
-            </tr>
-            <tr>
-                <td>
-                    <p>
-                        <a href="view.aspx">Gator Bait CITO</a><br />
-                        by <a href="#">DoTheNumbers</a> | Block L
-                    </p>
-                </td>
-                <td>
-                    <p>9 Mar 13</p>
-                </td>
-                <td>
-                    <p>0 times</p>
-                </td>
-            </tr>
-        </table>--%>
     </header>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="contentright" runat="server">

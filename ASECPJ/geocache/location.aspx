@@ -150,10 +150,11 @@
                 <input id="longitude" type="text" value="" class="formstyle width80" placeholder="Latitude" /><br />--%>
 
                 Latitude:
-                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" /><br />
+                    <asp:TextBox ID="latitudeTextBox" runat="server" class="formstyle width80" placeholder="Latitude" />
+                        <asp:RequiredFieldValidator ID="latitudeTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="latitudeTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                         Longitude:
-                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" /><br />
-
+                    <asp:TextBox ID="longitudeTextBox" runat="server" class="formstyle width80" placeholder="Longitude" />
+                        <asp:RequiredFieldValidator ID="longitudeTextBoxRequiredFieldValidator" CssClass="validator" ControlToValidate="longitudeTextBox" runat="server" ErrorMessage="*Required field"></asp:RequiredFieldValidator><br />
                         <asp:Button ID="searchButton" runat="server" class="button formstyle" Width="100%" Text="Search" OnClick="searchButton_Click" />
                     </p>
                 </div>

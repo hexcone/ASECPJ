@@ -85,6 +85,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.TextBox findNameTextBox;
         
         /// <summary>
+        /// findNameTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator findNameTextBoxRequiredFieldValidator;
+        
+        /// <summary>
         /// findDescriptionTextBox control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,15 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox findDescriptionTextBox;
+        
+        /// <summary>
+        /// findDescriptionTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator findDescriptionTextBoxRequiredFieldValidator;
         
         /// <summary>
         /// findImageFileUpload control.
@@ -103,6 +121,15 @@ namespace ASECPJ.geocache {
         protected global::System.Web.UI.WebControls.FileUpload findImageFileUpload;
         
         /// <summary>
+        /// findImageFileUploadRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator findImageFileUploadRequiredFieldValidator;
+        
+        /// <summary>
         /// verificationCodeTextBox control.
         /// </summary>
         /// <remarks>
@@ -110,6 +137,15 @@ namespace ASECPJ.geocache {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox verificationCodeTextBox;
+        
+        /// <summary>
+        /// verificationCodeTextBoxRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator verificationCodeTextBoxRequiredFieldValidator;
         
         /// <summary>
         /// submitButton control.
